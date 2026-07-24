@@ -1,5 +1,8 @@
 # POCUS Atlas Benchmark - Reproducibility Release
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21538911.svg)](https://doi.org/10.5281/zenodo.21538911)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+
 Computational reproducibility for the manuscript **"Morphology, Not Motion:
 Benchmarking Vision-Language Models on Multi-Sign Lung Ultrasound
 Interpretation."**
@@ -153,6 +156,21 @@ are recorded here so the frozen outputs are interpretable:
   year   = {TBD},
   note   = {Preprint in preparation. Venue, year, and DOI to be finalized.},
   howpublished = {\url{TBD}}
+}
+```
+
+The **software/code archive** has its own DOI (independent of the manuscript,
+which is not yet submitted). The concept DOI below always resolves to the
+latest release:
+
+```bibtex
+@software{pocus_atlas_bench_code,
+  title     = {jeonglab-bcm/pocus-atlas-bench: Reproducibility release},
+  author    = {Lee, Jaeyeon and others},
+  year      = {2026},
+  publisher = {Zenodo},
+  doi       = {10.5281/zenodo.21538911},
+  url       = {https://doi.org/10.5281/zenodo.21538911}
 }
 ```
 
