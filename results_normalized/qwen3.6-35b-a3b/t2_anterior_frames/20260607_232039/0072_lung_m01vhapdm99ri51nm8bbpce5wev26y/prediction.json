@@ -1,0 +1,13 @@
+{
+  "lung_rockets": true,
+  "subtype": "septal",
+  "consolidation": false,
+  "consolidation_type": null,
+  "input_mode": "frames",
+  "usage": {
+    "pass1_input_tokens": 2280,
+    "pass1_output_tokens": 2653,
+    "pass2_input_tokens": 748,
+    "pass2_output_tokens": 1165
+  }
+}

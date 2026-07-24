@@ -1,0 +1,8 @@
+{
+  "run_id": "20260609_183141",
+  "model_id": "medgemma-27b",
+  "input_mode": "frames",
+  "case_count": 39,
+  "timestamp": "Tue Jun 09 18:53:32 CDT 2026",
+  "normalized_task_dir": "t3_posterior_frames"
+}

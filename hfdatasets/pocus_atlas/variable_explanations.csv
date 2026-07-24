@@ -1,0 +1,38 @@
+column,level,dtype,description
+id,metadata,str,Unique case identifier from POCUS Atlas
+source,metadata,str,"Dataset source partition (e.g. 'lung', 'lung_jr')"
+title,metadata,str,Original case title from POCUS Atlas
+sign::M-mode::Seashore sign,sign,bool,Seashore sign on M-mode (normal lung sliding)
+sign::M-mode::Stratosphere/Barcode,sign,bool,Stratosphere/Barcode sign on M-mode (absent sliding)
+sign_extra::White lung,sign_extra,bool,White lung (extreme confluent B-lines)
+sign_extra::Bat sign,sign_extra,bool,Bat sign
+sign_extra::Fractal sign,sign_extra,bool,Fractal sign (BLUE term for shred sign)
+sign_extra::Tissue-like sign,sign_extra,bool,Tissue-like sign / hepatization
+sign_extra::Jellyfish sign,sign_extra,bool,Jellyfish sign (atelectatic lung floating in effusion)
+sign_extra::Sinusoid sign,sign_extra,bool,Sinusoid sign on M-mode (effusion)
+sign_extra::Curtain sign,sign_extra,bool,Curtain sign (lung curtain)
+sign_extra::Spine sign,sign_extra,bool,Spine sign (vertebral bodies visible beyond diaphragm — posterior effusion or consolidation)
+sign_extra::Plankton sign,sign_extra,bool,Plankton sign (exudative effusion marker)
+sign_extra::Hematocrit sign,sign_extra,bool,Hematocrit sign (hemothorax layering)
+sign_extra::Quad sign,sign_extra,bool,Quad sign (BLUE effusion landmark)
+interp::Pleura::Sliding,interp,cat:present|absent|both|not assessed,Pleura sliding status. 'both' = transition visible (e.g. lung point).
+interp::Pleura::Morphology,interp,cat:thin|irregular|both|not assessed,Pleura morphology.
+interp::Lung rockets,interp,bool,"Lung rockets (B-lines present — observation level, not profile assignment)"
+interp::Lung point,interp,bool,Lung point (transition between sliding/no sliding)
+interp::PLAPS,interp,bool,PLAPS (posterolateral alveolar/pleural syndrome)
+interp::Consolidation,interp,bool,"Consolidation (hepatization, fractal sign, air bronchogram)"
+interp_extra::Lung sliding (any),interp_extra,bool,Lung sliding mention (polarity-neutral)
+interp_extra::A-lines,interp_extra,bool,A-lines / A-pattern mentioned (coverage only)
+interp_extra::Normal posterior,interp_extra,bool,Normal posterior view (lung curtain / curtain sign without pathology)
+interp_extra::Air bronchogram,interp_extra,bool,Air bronchogram (any type)
+interp_extra::Double lung point,interp_extra,bool,Double lung point
+interp_extra::Septal rockets,interp_extra,bool,Septal rockets (spared/patchy B-lines)
+interp_extra::Ground-glass rockets,interp_extra,bool,Ground-glass rockets (confluent B-lines)
+interp_extra::Air bronchogram (static),interp_extra,bool,Static air bronchogram
+interp_extra::Air bronchogram (dynamic),interp_extra,bool,Dynamic air bronchogram
+pathology,pathology,cat:Normal|Pulmonary edema|Pneumonia|COPD/Asthma|Pneumothorax|Pulmonary embolism|unspecified,Respiratory pathology (BLUE adult core). First-match-wins.
+pathology_extra,pathology_extra,cat:Hemothorax|Empyema|Pulmonary embolism|COVID-19|Malignancy / cancer|Aspiration pneumonitis|Bronchiolitis|Contusion|ARDS|Airway (intubation/stenosis)|unspecified,Extended pathology (dataset-driven). First-match-wins among extras.
+predicted::profile,predicted,str,"BLUE profile assigned by decision tree (A, A', B, B', A/B, C, none)."
+predicted::pathology,predicted,cat:Pneumothorax|Pneumonia/Atelectasis|Pulmonary edema|Pneumonia|Normal/COPD/Asthma/PE|unspecified,Pathology predicted by BLUE decision tree.
+predicted::scan_zone,predicted,cat:anterior|posterior|not assessed,Scan zone inferred from BLUE protocol probe positions. Anterior = upper/lower BLUE points; Posterior = PLAPS point.
+excluded,meta,str,Non-empty = excluded from benchmarking with reason. Empty = included.

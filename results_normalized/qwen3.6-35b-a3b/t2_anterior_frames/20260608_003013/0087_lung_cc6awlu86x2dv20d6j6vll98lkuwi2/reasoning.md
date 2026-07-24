@@ -1,0 +1,515 @@
+# 0087_lung_cc6awlu86x2dv20d6j6vll98lkuwi2 — Reasoning
+
+The user wants me to analyze a series of lung ultrasound frames.
+
+**1. B-lines Assessment:**
+- I need to look for vertical, hyperechoic artifacts arising from the pleural line.
+- Looking at the frames:
+    - Frame 1: There are some vertical streaks, but they don't look like classic, distinct B-lines. They look more like artifacts or maybe very faint B-lines, but let's look closer. Wait, looking at the sequence, especially frames 1, 2, 3, there are vertical artifacts. Let's re-evaluate.
+    - Actually, looking closely at the pleural line, there are vertical white lines extending downwards. However, they seem to fade or are not perfectly reaching the bottom in all frames, or they are quite thick.
+    - Let's look at the "ground_glass" description. "Confluent or coalescing B-lines that merge into a diffuse white sheet obscuring A-lines." In these images, the area below the pleural line is somewhat hyperechoic and heterogeneous, but not a solid white sheet.
+    - Let's look for "septal" B-lines. "Discrete, well-spaced B-lines". I see some vertical lines.
+    - Let's look for the absence. "No vertical artifacts meeting B-line criteria; A-lines... may dominate."
+    - Let's look at the pleural line itself. It looks relatively intact.
+    - Wait, let's look at the overall texture. The lung parenchyma below the pleura looks somewhat "ground glass" or at least hyperechoic in the subpleural region.
+    - Let's re-examine the vertical artifacts. In frames 1-3, there are vertical hyperechoic lines. They seem to originate from the pleural line. They extend deep. This looks like B-lines.
+    - Are they discrete or confluent? In the middle section, they seem to merge a bit, creating a "white out" effect in that specific subregion. But there are also clearer lines.
+    - Let's look at the specific patterns.
+    - Frame 1: There is a vertical streak on the right side of the subpleural space.
+    - Frame 2: Similar.
+    - Frame 3: Similar.
+    - Frame 4-8: The image is a bit brighter. The vertical artifacts are more visible. They look like a "curtain sign" or just heavy B-lines.
+    - Actually, looking really closely at the images, there are distinct vertical hyperechoic lines arising from the pleura. They extend to the bottom of the screen. This fits the definition of B-lines.
+    - Are they septal or ground glass?
+        - Septal: Discrete, well-spaced.
+        - Ground glass: Confluent.
+    - In these images, the vertical lines are somewhat numerous and merge, but there are dark spaces between them in some parts. However, the overall appearance is of increased density.
+    - Let's look at the "consolidation" criteria first, as that might clarify things.
+    - **Consolidation Assessment**:
+        - "Tissue-like hepatization": Does the lung look like liver? The area below the pleura is hyperechoic. It has a somewhat grainy texture. It doesn't look perfectly aerated (which would be A-lines).
+        - "Shred sign": Is there an irregular border? The border between the consolidated area and the deeper lung is not super distinct, but it's not a clear "shred".
+        - "Air bronchograms": I see some punctate hyperechoic foci deep in the lung. In frame 4, 5, 6, there are small bright spots.
+        - Let's look at the texture again. The lung parenchyma looks "solidified". It's not the typical black/aerated lung. It looks like liver tissue (hepatization). This is a strong sign of consolidation.
+        - If it is consolidation, then B-lines might be less relevant or secondary. But the prompt asks to assess both.
+        - Let's reconsider the B-lines. If there is consolidation, can you have B-lines? Yes, in pneumonia or edema.
+        - Let's look at the vertical lines again. They are very prominent. In fact, the entire subpleural region looks like a "white curtain". This is often described as a "white lung" or confluent B-lines (ground glass appearance).
+        - Let's look at the options provided.
+        - "lung_rockets = true/false". The vertical lines are definitely there. So `true`.
+        - Subtype: "septal", "ground_glass", "mixed".
+            - The vertical lines are numerous and merge into a bright area. This looks like `ground_glass` or a very dense pattern. However, looking closely at frame 1, there is a distinct vertical line on the right. In frame 8, there's a horizontal line (A-line) mixed in? No, that's part of the consolidated tissue.
+            - Actually, let's look at the "ground_glass" definition again: "Confluent or coalescing B-lines that merge into a diffuse white sheet obscuring A-lines." The images show a very bright, hyperechoic area just below the pleura that extends down. It obscures the normal lung texture. This fits `ground_glass`.
+            - Wait, let's look at the "consolidation" part again. "Tissue-like hepatization". The texture below the bright area looks somewhat homogeneous and grey.
+            - Is it possible this is just severe interstitial syndrome (ground glass B-lines) and not frank consolidation? Or is it consolidation?
+            - In frame 4, 5, 6, the texture deep to the pleura looks like "tissue-like". It's not perfectly black. It has a speckled grey appearance. This suggests hepatization.
+            - Let's look for air bronchograms. In frame 4, there is a horizontal linear hyperechoic structure deep down. In frame 6, there are small bright spots.
+            - Let's look at the border. The pleural line is visible. Below it is a bright, echogenic zone. This could be a "shred sign" if the border is irregular. The border looks somewhat irregular.
+            - Let's look at the classification options.
+            - If I see hepatization, `consolidation = true`.
+            - If I see ground glass B-lines, `lung_rockets = true` and `subtype = ground_glass`.
+            - Let's try to distinguish between severe B-lines (ground glass) and consolidation.
+            - In consolidation (hepatization), the lung loses its aeration. The pleural line might be irregular.
+            - In these images, the pleural line is visible. Below it, there is a very bright, hyperechoic region. This looks like "white lung" caused by dense B-lines.
+            - However, looking deeper, the echogenicity doesn't fade to black. It stays grey. This suggests loss of aeration -> consolidation.
+            - Let's look at the "air bronchograms" clue. In frame 4, deep in the field, there are horizontal linear echoes. These could be air bronchograms.
+            - Let's look at the "shred sign". The interface between the aerated lung (if any) and the consolidated lung is usually the shred sign. Here, most of the view is hyperechoic.
+            - Let's reconsider the B-lines. In many frames (e.g., frame 1), I see distinct vertical lines. They don't completely merge into a single sheet everywhere. In frame 8, there is a distinct vertical line on the right. This suggests `septal` might be possible, but the overall brightness suggests `ground_glass`.
+            - Let's look at the "mixed" option. "Both septal... and ground_glass... visible".
+            - Actually, looking at the sequence, it looks like a video clip. The probe is moving slightly.
+            - The most prominent feature is the bright, vertical streaks.
+            - Let's look at the specific visual features again.
+            - Pleural line: Visible, slightly irregular.
+            - Subpleural region: Hyperechoic.
+            - Deep region: Hypoechoic/Grey.
+            - Vertical artifacts: Present. They are bright and extend down.
+            - Let's classify the B-lines. They look like "lung rockets". They are vertical. They extend to the bottom (or close to it). They don't fade quickly. So `lung_rockets = true`.
+            - Subtype: In frame 1, there are distinct lines. In frame 4, the area looks like a sheet of white. This looks like `ground_glass`.
+            - Now for consolidation.
+            - Is there hepatization? The area below the pleura is echogenic, resembling liver. It's not the typical "comet tail" artifacts fading into black. It's a solid-looking grey area.
+            - Is there a shred sign? The deep border of this hyperechoic area is somewhat ill-defined but could be interpreted as a shred.
+            - Are there air bronchograms? In frame 4 and 5, there are small bright spots within the grey area. This looks like air bronchograms.
+            - So, `consolidation = true`.
+            - Type: `hepatization` seems the most dominant feature (tissue-like texture). `air_bronchogram` is also present. The prompt asks for the "predominant type". The hepatization is quite extensive.
+            - Wait, let's look at the B-line classification again. If there is consolidation, can we still call it B-lines? Yes, B-lines can be seen in consolidation (especially in the transition zone or associated edema). But often, consolidation is described as "hepatization" and distinct from simple B-lines.
+            - However, the prompt asks to assess B-lines *first*.
+            - Let's look at the images as a "white lung" pattern. This is often confluent B-lines.
+            - Let's look for the "shred sign". In frame 8, the border between the bright subpleural area and the deeper grey area is irregular.
+            - Let's look for "air bronchograms". In frame 4, deep center, there is a horizontal bright line.
+            - Let's look at the provided text descriptions for B-lines. "ground_glass: Confluent or coalescing B-lines that merge into a diffuse white sheet obscuring A-lines." This matches the bright subpleural area perfectly.
+            - So, `lung_rockets = true`, `subtype = ground_glass`.
+            - Now consolidation.
+            - The prompt says: "Tissue-like hepatization: Lung parenchyma appears solid and echogenic, resembling liver texture". The area below the "white sheet" (or the white sheet itself) looks solid.
+            - If the B-lines are confluent (ground glass), it indicates alveolar edema. This is often a precursor to or part of consolidation, but distinct.
+            - However, looking at the lower part of the screen, it's grey and relatively homogeneous. This looks like hepatization.
+            - Let's look at the "shred sign" again. "Irregular, shredded deep border between consolidated and aerated lung." If the deep part is aerated (black), and the top is consolidated (white), the border is the shred sign.
+            - In these images, the deep part is not clearly black. It's grey. This suggests the whole thing is consolidated or has severe edema.
+            - Let's reconsider the "B-lines" assessment.
+            - In frame 1, there are distinct vertical lines.
+            - In frame 4, it looks like a continuous white area.
+            - This suggests a transition or a mix.
+            - But let's look at the overall pattern. It looks like a classic "White Lung" or severe interstitial syndrome, often seen in ARDS or pulmonary edema. This is characterized by confluent B-lines (ground glass).
+            - Is there consolidation? In severe pulmonary edema, you can get "consolidation" (alveolar edema). This is hepatization.
+            - The texture in the lower half looks like liver (hepatization).
+            - So, `consolidation = true`.
+            - Type: `hepatization`.
+            - Wait, is it possible that the "B-lines" are actually artifacts of the consolidation?
+            - The prompt separates the assessments.
+            - Let's look really closely at the "B-lines".
+            - Frame 1: Vertical hyperechoic lines. They are distinct. They extend down.
+            - Frame 4: The lines are very close together, forming a sheet.
+            - This fits `ground_glass` B-lines.
+            - Now, is there consolidation?
+            - The area where the B-lines are most dense looks like a "white sheet". This is the definition of ground glass B-lines.
+            - Below that, is there hepatization?
+            - The texture in the middle/bottom looks somewhat uniform and grey.
+            - Let's look for air bronchograms again. In frame 4, deep down, there are punctate hyperechoic foci. This is a sign of consolidation (air bronchogram).
+            - So, we have signs of consolidation (hepatization + air bronchograms) AND signs of B-lines (ground glass).
+            - In clinical practice, this often represents alveolar-interstitial syndrome (e.g. pulmonary edema) where you have both interstitial edema (B-lines) and alveolar edema (consolidation/hepatization).
+            - So both `lung_rockets = true` and `consolidation = true`.
+            - For B-lines subtype: The lines are confluent in the upper part, looking like a white sheet. This is `ground_glass`.
+            - For consolidation type: The texture is tissue-like. `hepatization`.
+            - Let's double check the "B-lines absent" possibility.
+            - Are those vertical lines actually B-lines? Yes, they arise from the pleura, are hyperechoic, vertical, and extend to the bottom.
+            - Are they distinct? In some frames, yes. In others, they merge.
+            - So `lung_rockets = true`.
+            - Subtype: Since they merge into a white sheet in some views (like frame 4, 5), `ground_glass` is appropriate.
+            - Consolidation: The presence of air bronchograms (bright spots in the grey area) and the tissue-like appearance strongly points to `hepatization`.
+            - So, `consolidation = true`, `consolidation_type = "hepatization"`.
+
+            - Let's refine the B-line subtype.
+            - "septal": discrete, well-spaced.
+            - "ground_glass": confluent.
+            - Looking at frame 1, there are gaps. Looking at frame 4, it's very bright.
+            - Is it mixed? "Both septal... and ground_glass... visible".
+            - In frame 1, I see distinct lines. In frame 4, I see a sheet. This could be `mixed`.
+            - However, usually, if it looks like a white sheet, it's ground glass. The distinct lines in frame 1 might just be the edges of the sheet or fewer lines.
+            - Let's look at the "ground_glass" definition again: "Confluent or coalescing B-lines that merge into a diffuse white sheet obscuring A-lines."
+            - The images show a diffuse white sheet just below the pleura.
+            - So `ground_glass` seems the best fit for the B-line pattern.
+
+            - Let's refine the consolidation type.
+            - "hepatization": tissue-like.
+            - "shred_sign": irregular border.
+            - "air_bronchogram": punctate/linear hyperechoic foci.
+            - In frame 4, 5, 6, there are clearly bright spots deep in the grey area. These look like air bronchograms.
+            - The texture is also liver-like.
+            - Which is predominant?
+            - The area of hepatization/air bronchograms takes up the central and lower part. The B-lines are more subpleural.
+            - Actually, the "white sheet" (ground glass B-lines) *is* a form of alveolar-interstitial syndrome. But frank consolidation (hepatization) is distinct.
+            - The grey area below the bright subpleural zone looks like hepatized lung.
+            - So `consolidation = true`.
+            - Type: `hepatization` covers the tissue-like appearance. `air_bronchogram` is a feature within it.
+            - Usually, if air bronchograms are visible, it's a strong sign of consolidation.
+            - Let's look at the prompt's classification for consolidation_type. It allows "hepatization", "shred_sign", "air_bronchogram".
+            - I see hepatization (tissue texture). I see air bronchograms (bright spots).
+            - The hepatization seems to be the overarching feature of the non-aerated lung.
+            - So I will go with `hepatization`.
+
+            - Wait, let's look at the B-lines again.
+            - In frame 1, 2, 3, the vertical lines are quite distinct. They don't completely merge into a sheet everywhere.
+            - In frame 8, there is a clear vertical line on the right.
+            - Maybe `mixed` is better?
+            - "mixed: Both septal (discrete, spaced) and ground_glass (confluent, coalescing) patterns are visible".
+            - In frame 1, there are spaced lines. In frame 4, there is a confluent area.
+            - This fits `mixed`.
+            - Let's look at the "ground_glass" option again. "Confluent... merge into a diffuse white sheet".
+            - The images *do* show a diffuse white sheet in the subpleural region in several frames.
+            - But there are also discrete lines visible in other frames.
+            - Let's look at the provided solution options. It's a classification task.
+            - Let's assume the most prominent feature.
+            - The "white lung" appearance is very strong. This is typically `ground_glass`.
+            - However, looking at frame 1, the lines are distinct.
+            - Let's look at frame 8. The lines are distinct.
+            - Maybe it's `septal`? No, because in other frames they merge.
+            - Maybe it's `mixed`.
+            - Let's look at the consolidation again.
+            - The grey area deep down. Is it aerated?
+            - If it were aerated, it would be black with A-lines. It is not. It is grey.
+            - This confirms `consolidation = true`.
+            - The texture is "tissue-like".
+            - So `consolidation_type = hepatization`.
+
+            - Let's reconsider the B-lines.
+            - If the lung is consolidated, can we see B-lines?
+            - Yes, at the border of the consolidation, or in the surrounding lung.
+            - But here, the B-lines seem to be *part* of the consolidated area or the subpleural region.
+            - Actually, confluent B-lines (ground glass) *are* a sign of alveolar-interstitial syndrome, often indistinguishable from consolidation without Doppler or specific signs. But the prompt separates them.
+            - "ground_glass: Confluent or coalescing B-lines... Indicates alveolar edema".
+            - "hepatization: Lung parenchyma appears solid...".
+            - These can coexist.
+            - In the images, the upper part (subpleural) is very bright (B-lines/ground glass). The deeper part is grey (hepatization).
+            - So both are present.
+            - For B-lines: The upper part is a "white sheet". This is `ground_glass`.
+            - For consolidation: The deeper part is tissue-like. This is `hepatization`.
+            - Is there a shred sign? The border between the bright B-line zone and the grey hepatized zone is somewhat irregular. But "hepatization" is the primary texture.
+            - Is there an air bronchogram? Yes, visible in the deeper grey zone.
+            - So `consolidation = true`, `consolidation_type = "hepatization"` (or "air_bronchogram" if that's more specific, but hepatization describes the bulk). The prompt says "predominant type". The tissue-like appearance is widespread.
+            - Let's look at the B-lines again.
+            - Are they definitely B-lines?
+            - Yes, vertical, hyperechoic, arising from pleura.
+            - Are they `ground_glass`?
+            - In frames 4-8, the subpleural region is a continuous white area. This fits `ground_glass`.
+            - In frames 1-3, it's a bit patchy.
+            - I will classify B-lines as `ground_glass` because the "white sheet" appearance is the most striking feature in the later frames, which often represent the "best" view or the main pathology. Also, the prompt for ground_glass says "merge into a diffuse white sheet". That is exactly what is seen in frames 4-8.
+
+            - Wait, let's look at frame 1 again.
+            - There are distinct vertical lines.
+            - Is it possible the answer is `septal`?
+            - "Discrete, well-spaced B-lines with dark lung parenchyma visible between them."
+            - In frame 1, between the vertical lines, is the lung dark?
+            - The area between the lines is grey, not black.
+            - In frame 4, it's white.
+            - So it's not `septal` (which requires dark parenchyma between).
+            - So it must be `ground_glass` or `mixed`.
+            - Given the strong "white sheet" in later frames, `ground_glass` is a strong candidate.
+            - But in frame 1, there are gaps.
+            - Let's look at frame 8. The vertical lines are distinct again.
+            - This suggests `mixed`.
+            - Let's check the definition of `mixed`: "Both septal... and ground_glass... visible in different regions or at different time points".
+            - This fits perfectly. Frame 1/8 shows discrete lines (septal-like). Frame 4/5 shows confluent sheet (ground_glass).
+            - So `lung_rockets = true`, `subtype = "mixed"`.
+
+            - Now for consolidation.
+            - `consolidation = true`.
+            - The lung parenchyma is not aerated (not black). It is grey/tissue-like.
+            - `consolidation_type`.
+            - "hepatization": tissue-like. Yes.
+            - "shred_sign": irregular border. The border between the aerated lung (if any deep down? No, deep down is grey too) and consolidated lung.
+            - Actually, looking at the bottom of the screen, it's still grey.
+            - Is there aerated lung anywhere?
+            - Maybe at the very bottom right or left? No, it looks uniformly grey/hyperechoic in the lower half.
+            - This suggests extensive consolidation.
+            - "air_bronchogram": Punctate or linear hyperechoic foci.
+            - In frame 4, deep center, there is a horizontal bright line. This is an air bronchogram.
+            - In frame 6, similar.
+            - So air bronchograms are present.
+            - Which type is predominant?
+            - The tissue-like appearance (hepatization) is the background texture. The air bronchograms are features *within* it.
+            - Usually, if hepatization is present, that's the primary descriptor. Air bronchograms confirm it.
+            - So `consolidation_type = "hepatization"`.
+
+            - Let's review the B-line subtype again.
+            - If I choose `ground_glass`, I am saying they merge.
+            - If I choose `mixed`, I am saying both are seen.
+            - In frame 1, the lines are distinct.
+            - In frame 4, they are merged.
+            - This is the definition of `mixed`.
+            - However, often "ground glass" is used when the B-lines are so numerous they create a white out.
+            - Let's look at the images as a whole. The "white lung" appearance is very dominant in frames 4-8.
+            - But frame 1 is the start.
+            - Let's look at the provided images again.
+            - Image 1: Distinct vertical lines.
+            - Image 2: Distinct vertical lines.
+            - Image 3: Distinct vertical lines.
+            - Image 4: Brighter, lines merging.
+            - Image 5: Brighter, lines merging.
+            - Image 6: Brighter, lines merging.
+            - Image 7: Brighter, lines merging.
+            - Image 8: Brighter, lines merging.
+            - Actually, looking closely at Image 4, 5, 6, 7, 8, the "white sheet" is very prominent.
+            - But in Image 8, there are distinct vertical lines again on the right side.
+            - So `mixed` seems technically correct.
+            - However, in many LUS classifications, "Ground Glass" is a specific pattern of B-lines. If the B-lines are numerous and coalescing, it's Ground Glass.
+            - The prompt says "mixed: Both septal... and ground_glass... visible".
+            - This implies distinct regions.
+            - In these frames, the *same* region changes from discrete to confluent. Or maybe the probe moves.
+            - If the probe moves to a different area, and one area has discrete lines and another has confluent, it's mixed.
+            - If the same area changes, it might just be "ground glass" appearing and disappearing? No, B-lines are stable.
+            - So the probe is likely moving over an area with varying density.
+            - So `mixed` is a good candidate.
+
+            - Let's reconsider `ground_glass`.
+            - "Confluent or coalescing B-lines that merge into a diffuse white sheet obscuring A-lines."
+            - This describes the appearance in frames 4-8 perfectly.
+            - Is it possible that frame 1 is just a different view where we see the edges?
+            - Or maybe the "white sheet" is the key feature.
+            - Let's look at the "consolidation" part again.
+            - Is it possible that what I'm calling "ground glass B-lines" is actually just the surface of the consolidated lung?
+            - No, B-lines are artifacts. Consolidation is a change in tissue density.
+            - The bright vertical lines are artifacts (B-lines).
+            - The grey texture below is the tissue.
+            - So both exist.
+
+            - Let's try to find a definitive feature.
+            - In frame 1, look at the pleural line. It's bright.
+            - Below it, there are vertical streaks.
+            - Deep to that, it's dark grey.
+            - In frame 4, the vertical streaks are very bright and merge. The deep part is light grey.
+            - This transition from dark grey (some aeration?) to light grey (consolidation?) suggests the probe is moving from the edge of the consolidation into the consolidation.
+            - At the edge (Frame 1), we might see discrete B-lines or the "shred sign".
+            - In the middle (Frame 4), we see a white sheet (ground glass) and hepatization.
+            - This supports `mixed` for B-lines (if we consider the whole clip) and `hepatization` for consolidation.
+            - Or, if we look at the "predominant" view...
+            - The prompt asks to "Analyze frame by frame".
+            - Frame 1: B-lines present. Appear somewhat discrete but numerous.
+            - Frame 4-8: B-lines confluent (Ground Glass).
+            - So `lung_rockets = true`.
+            - Subtype: Since both discrete and confluent patterns appear, `mixed` is the most accurate description based on the provided definitions. "Both septal... and ground_glass... visible in different regions or at different time points". This fits the sequence.
+
+            - Consolidation:
+            - Is there tissue-like hepatization? Yes, the lung tissue looks solid.
+            - Is there shred sign? The border is irregular in some frames.
+            - Is there air bronchogram? Yes, visible in deep parts.
+            - Predominant type: `hepatization` seems the best fit for the overall "solid" look.
+
+            - Let's double check the "B-lines present" criteria.
+            - "Hyperechoic vertical artifacts arising from the pleural line, extending to the bottom of the screen without fading, moving with lung sliding."
+            - In frame 1, do they extend to the bottom?
+            - They extend quite deep.
+            - In frame 4, the white sheet obscures the bottom.
+            - This fits.
+
+            - Final decision on B-line subtype:
+            - The definition of "ground_glass" is "Confluent or coalescing B-lines that merge into a diffuse white sheet".
+            - The definition of "septal" is "Discrete, well-spaced B-lines with dark lung parenchyma visible between them."
+            - In frame 1, the parenchyma between lines is not really "dark". It's greyish.
+            - In frame 4, it's a white sheet.
+            - So `ground_glass` fits well.
+            - Does `mixed` fit better?
+            - "Both septal... and ground_glass... visible".
+            - I don't see clear "septal" B-lines (discrete, well-spaced with dark gaps). The gaps are grey/hyperechoic.
+            - So maybe it's just `ground_glass`. The "white sheet" is the main feature.
+            - Let's look at frame 8 again. The lines on the right are distinct. But the area to the left is white.
+            - This is `mixed`.
+            - However, usually, if it looks like a white sheet, it's called "Ground Glass B-lines".
+            - Let's look at the "Consolidation" again.
+            - If there is consolidation, the B-lines might be artifactual or associated.
+            - But the prompt asks to assess B-lines *first*.
+            - I will bet on `lung_rockets = true` and `subtype = ground_glass`. Why? Because the "white sheet" is the most striking and consistent feature in the later frames, which usually represent the "hold" position. The earlier frames might be entry.
+            - Wait, let's look at the "Consolidation" again.
+            - "Tissue-like hepatization".
+            - "Shred sign".
+            - "Air bronchograms".
+            - In frame 4, 5, 6, 7, 8, the texture is very uniform grey. This is hepatization.
+            - The air bronchograms are small punctate spots.
+            - So `consolidation = true`, `type = hepatization`.
+
+            - Let's reconsider the B-line subtype.
+            - If I have hepatization, do I have B-lines?
+            - Technically, B-lines are artifacts. They can be seen in consolidation (e.g. in the transition zone).
+            - But the "white sheet" (ground glass) is often used to describe severe interstitial syndrome *without* frank consolidation (though it can overlap).
+            - Here, the tissue texture is definitely not aerated. It's grey.
+            - So it's likely a mix of interstitial edema (B-lines) and alveolar edema/consolidation (hepatization).
+            - The B-lines in the subpleural region are confluent -> `ground_glass`.
+            - Are there discrete ones? Maybe at the edge.
+            - I will stick with `ground_glass` for B-lines because the "white sheet" is very prominent.
+            - Wait, looking at frame 1, the lines are quite distinct.
+            - Let's look at the prompt's example for `mixed`. "visible in different regions or at different time points".
+            - This suggests that if I see distinct lines in frame 1 and confluent in frame 4, it's mixed.
+            - Frame 1: Distinct lines.
+            - Frame 4: Confluent sheet.
+            - This fits `mixed` perfectly.
+
+            - Let's refine the consolidation type.
+            - The prompt lists "hepatization", "shred_sign", "air_bronchogram".
+            - I see hepatization (tissue texture).
+            - I see air bronchograms (bright spots).
+            - Is the "shred sign" present?
+            - The border between the consolidated lung and... what? The rest of the lung?
+            - If the whole thing is consolidated, there is no border.
+            - If there is a border, it's irregular.
+            - In frame 8, the right side has distinct lines, the left has a sheet. The deep part is grey.
+            - The border of the grey area seems to fade into the bottom.
+            - I don't see a clear "shred sign" (irregular deep border).
+            - I see air bronchograms.
+            - So `consolidation_type` could be `air_bronchogram`?
+            - "Predominantly punctate or linear hyperechoic foci within hepatized lung."
+            - The foci are visible, but is the *predominant* feature the foci or the hepatization?
+            - The hepatization (the grey tissue) takes up more space.
+            - So `hepatization` is likely the intended answer.
+
+            - Let's try one more interpretation.
+            - Could this be *just* B-lines (Ground Glass) and *no* consolidation?
+            - "Ground_glass: Confluent... B-lines... Indicates alveolar edema or diffuse interstitial disease."
+            - "Hepatization: Lung parenchyma appears solid and echogenic... loss of normal aeration artifacts."
+            - In the images, do we see normal aeration artifacts (A-lines, Z-lines)?
+            - We see vertical B-lines. We don't see clear horizontal A-lines.
+            - The deep part is grey, not black.
+            - Loss of aeration = consolidation (or severe edema).
+            - In LUS, "consolidation" usually refers to pneumonia or atelectasis. "Ground glass B-lines" refers to edema/ARDS.
+            - The prompt distinguishes them.
+            - If I see hepatization, it's consolidation.
+            - If I see ground glass B-lines, it's interstitial/alveolar edema.
+            - Can both be true? Yes.
+            - The prompt asks for "consolidation = true/false".
+            - And "consolidation_type".
+            - So I need to decide if there is frank consolidation.
+            - The texture is liver-like. That's hepatization.
+            - So `consolidation = true`.
+
+            - Summary:
+            - B-lines: Present (`true`).
+            - Subtype: `ground_glass` (due to the white sheet) or `mixed` (due to frame 1).
+            - Let's look at frame 1 again. The lines are vertical. Are they "well-spaced"? They look fairly close. And the background is not dark. So it's not really "septal".
+            - So maybe it's just `ground_glass`. The "white sheet" is the dominant feature.
+            - Let's assume `ground_glass`.
+            - Consolidation: `true`.
+            - Type: `hepatization`.
+
+            - Wait, let's look at the "shred sign" again.
+            - In frame 1, the deep border of the hyperechoic subpleural area is somewhat irregular.
+            - In frame 4, it's very bright.
+            - Let's look at the "air bronchogram" again.
+            - In frame 4, deep center, there is a horizontal bright line. This is classic air bronchogram.
+            - This confirms consolidation.
+            - So `consolidation = true`.
+            - Type: `air_bronchogram`? Or `hepatization`?
+            - The prompt says "predominant type".
+            - The area is largely grey/tissue-like. The air bronchograms are small spots.
+            - So `hepatization` is predominant.
+
+            - Final check on B-lines.
+            - "lung_rockets = true".
+            - "subtype": The images show a mix of distinct lines (frame 1, 8) and confluent white areas (frame 4, 5).
+            - This fits `mixed` perfectly. "Both septal... and ground_glass... visible in different regions or at different time points".
+            - Frame 1 is a different time point/region than Frame 4? Or just different views.
+            - In Frame 1, I see discrete lines.
+            - In Frame 4, I see a sheet.
+            - So `mixed` is the most precise answer.
+
+            - Let's write down the observations.
+            - B-lines: Vertical hyperechoic artifacts are visible. They arise from the pleural line. In some frames (1, 8), they appear somewhat discrete. In others (4-7), they coalesce into a diffuse white sheet (ground glass appearance). Thus, `lung_rockets = true` and `subtype = mixed`.
+            - Consolidation: The lung parenchyma shows a tissue-like echogenicity (hepatization). There are hyperechoic foci within this tissue (air bronchograms). Thus, `consolidation = true` and `type = hepatization` (or air_bronchogram, but hepatization is the background). Actually, looking at frame 4, the air bronchogram is quite distinct. But the whole area is hepatized. I'll go with `hepatization`.
+
+            - Wait, is it possible that the "white sheet" *is* the consolidation?
+            - No, the prompt defines "ground_glass" B-lines separately from "hepatization".
+            - "Ground_glass: Confluent... B-lines...".
+            - "Hepatization: Tissue-like...".
+            - So they are distinct entities in the classification schema.
+            - I see both.
+            - So `lung_rockets = true` (ground_glass/mixed) and `consolidation = true` (hepatization).
+
+            - Let's refine the B-line subtype choice.
+            - If I have to choose one, `ground_glass` describes the most severe/distinctive feature (the white sheet).
+            - But `mixed` describes the variation across the clip.
+            - The prompt says "Analyze frame by frame... then assess".
+            - This implies looking at the whole sequence.
+            - The sequence shows both discrete and confluent patterns.
+            - So `mixed` is better.
+
+            - Let's refine the consolidation type.
+            - I see hepatization. I see air bronchograms.
+            - "Predominantly punctate or linear hyperechoic foci".
+            - In frame 4, the foci are visible.
+            - In frame 8, the foci are less visible.
+            - The hepatization is constant.
+            - So `hepatization`.
+
+            - One final check: Could this be just B-lines and no consolidation?
+            - "Ground_glass B-lines" indicates alveolar edema.
+            - "Hepatization" indicates consolidation (pneumonia/atelectasis).
+            - In pulmonary edema, you can get "consolidation" (alveolar filling). This looks like hepatization.
+            - So yes, they can coexist.
+            - The presence of air bronchograms is a specific sign of air-filled bronchi within consolidated lung.
+            - So `consolidation = true` is correct.
+
+            - Let's look at the "shred sign".
+            - "Irregular, shredded deep border".
+            - In frame 8, the border between the bright subpleural zone and the deeper zone is not a clean line. It's fuzzy.
+            - But `hepatization` is the main texture.
+
+            - Conclusion:
+            - B-lines: True. Subtype: mixed (or ground_glass). Let's look at the images one last time.
+            - Frame 1: Vertical lines.
+            - Frame 4: White sheet.
+            - Frame 8: Vertical lines.
+            - This is the definition of `mixed`.
+            - Consolidation: True. Type: hepatization.
+
+            - Wait, is it possible that the "white sheet" is actually just severe B-lines and the lung below is aerated?
+            - If the lung below were aerated, it would be black.
+            - In frame 4, the bottom of the screen is dark grey, not black.
+            - In frame 8, the bottom is dark grey.
+            - This suggests loss of aeration -> consolidation.
+
+            - Let's check the `lung_rockets` definition again.
+            - "Hyperechoic vertical artifacts... extending to the bottom of the screen without fading".
+            - In frame 4, the white sheet extends to the bottom.
+            - So `lung_rockets = true`.
+
+            - Final plan:
+            - B-lines: Present. Subtype: mixed (due to discrete lines in frames 1/8 and confluent in 4-7).
+            - Consolidation: Present. Type: hepatization (tissue-like texture) + air bronchograms (visible in deep parts). Predominant is hepatization.
+
+            - Actually, looking really closely at frame 4, the "white sheet" *is* the consolidation?
+            - No, the prompt distinguishes them.
+            - "Ground_glass: Confluent... B-lines".
+            - "Hepatization: Tissue-like".
+            - I see both. The subpleural region is the "white sheet" (B-lines). The deeper region is the "tissue-like" area (consolidation).
+            - Wait, in frame 4, the whole thing is bright.
+            - Maybe the "white sheet" *is* the ground glass B-lines, and the grey area below is the hepatization.
+            - Yes, that makes sense.
+            - So `lung_rockets = true`, `subtype = mixed`.
+            - `consolidation = true`, `type = hepatization`.
+
+            - One detail: "shred sign".
+            - In frame 1, the deep border of the hyperechoic area is irregular.
+            - But `hepatization` is the broader category.
+
+            - Let's reconsider the B-line subtype.
+            - If I select `ground_glass`, I am ignoring the discrete lines in frame 1.
+            - If I select `mixed`, I cover both.
+            - The prompt allows `mixed`. So `mixed` is safer and more accurate.
+
+            - Let's reconsider the consolidation type.
+            - "air_bronchogram" is a specific sign.
+            - "hepatization" is the general appearance.
+            - The prompt says "predominant type".
+            - The air bronchograms are visible but small. The hepatization is the main texture.
+            - So `hepatization`.
+
+            - Wait, is it possible that `lung_rockets = false`?
+            - "No vertical artifacts meeting B-line criteria".
+            - But I clearly see vertical artifacts.
+            - So `true`.
+
+            - Is it possible that `consolidation = false`?
+            - "No consolidation signs".
+            - But I see tissue-like texture.
+            - So `true`.
+
+            - Final check.
+            - B-lines: True.
+            - Subtype: Mixed.
+            - Consolidation: True.
+            - Type: Hepatization.
+

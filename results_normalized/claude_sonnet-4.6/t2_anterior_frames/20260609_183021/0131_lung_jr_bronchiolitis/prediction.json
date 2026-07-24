@@ -1,0 +1,13 @@
+{
+  "lung_rockets": true,
+  "subtype": "septal",
+  "consolidation": true,
+  "consolidation_type": "hepatization",
+  "input_mode": "frames",
+  "usage": {
+    "pass1_input_tokens": 4254,
+    "pass1_output_tokens": 2990,
+    "pass2_input_tokens": 1775,
+    "pass2_output_tokens": 112
+  }
+}

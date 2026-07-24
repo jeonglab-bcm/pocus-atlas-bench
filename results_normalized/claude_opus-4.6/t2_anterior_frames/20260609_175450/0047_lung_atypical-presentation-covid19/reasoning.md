@@ -1,0 +1,13 @@
+# 0047_lung_atypical-presentation-covid19 — Reasoning
+
+Let me analyze these sequential frames from a lung ultrasound video clip of an anterior lung zone, looking for B-lines and consolidation.
+
+**Frame-by-frame analysis:**
+
+**Frame 1:** I can see a bright, curved hyperechoic pleural line in the upper portion of the image. Below the pleural line, there appear to be some vertical artifacts (possible B-lines) extending downward. The artifacts appear as bright vertical streaks extending toward the bottom of the screen. There's also what appears to be some tissue above the pleural line (soft tissue/chest wall).
+
+**Frame 2:** Similar to frame 1 - the pleural line is visible as a bright curved line. 
+
+In frame 2, the area below the pleural line looks mostly dark with fewer vertical artifacts than frame 1, and the pleural line itself appears smooth. Frame 3 shows the pleural line again with some increased brightness and possible vertical artifacts below it, along with what might be irregular tissue near the pleural line. Frame 4 clearly displays the pleural line with distinct B-lines extending downward as bright vertical streaks, plus some brighter tissue-like area adjacent to the pleural line. Frame 5 begins similarly with the pleural line visible.
+
+Continuing through frames 5-10, I'm seeing a consistent pattern where the pleural line remains visible with a brighter, somewhat irregular area below it that could represent subpleural consolidation or a small consolidation with irregular borders—what might be described as a shred sign. Several frames also show vertical artifacts extending downward alongside these consolidated-appearing areas. The deep borders of these regions appear irregular throughout, which is notable across the sequence. The B-lines appear relatively discrete, suggesting a septal pattern. In the later frames, there's a subpleural consolidation with hepatized appearance and an irregular, shredded deep border consistent with a shred sign. But I'm second-guessing myself on the consolidation—looking more carefully at frames 5-10, the area below the pleural line shows mixed echogenicity rather than clear tissue-like consolidation. The consolidation shows that characteristic shred sign pattern with an irregular, shredded border, and I'm also picking up some reverberation artifacts from the consolidated tissue itself. Looking at the sequence of frames, the subpleural consolidation becomes increasingly apparent in the later ones, and I can distinguish the discrete septal B-lines from the consolidation pattern. My final read is septal-type B-lines present alongside shred sign consolidation.

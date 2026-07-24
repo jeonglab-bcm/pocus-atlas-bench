@@ -1,0 +1,8 @@
+{
+  "run_id": "20260607_053556",
+  "model_id": "gemma-4-31b-it",
+  "input_mode": "frames",
+  "case_count": 39,
+  "timestamp": "Sun Jun 07 05:37:31 CDT 2026",
+  "normalized_task_dir": "t3_posterior_frames"
+}

@@ -1,0 +1,8 @@
+{
+  "run_id": "20260609_175423",
+  "model_id": "claude_opus-4.6",
+  "input_mode": "frames",
+  "case_count": 39,
+  "timestamp": "Tue Jun 09 18:04:58 UTC 2026",
+  "normalized_task_dir": "t3_posterior_frames"
+}

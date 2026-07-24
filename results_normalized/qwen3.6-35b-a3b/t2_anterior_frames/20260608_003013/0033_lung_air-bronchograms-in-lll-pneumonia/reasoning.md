@@ -1,0 +1,608 @@
+# 0033_lung_air-bronchograms-in-lll-pneumonia — Reasoning
+
+The user wants me to analyze a series of lung ultrasound frames.
+
+**1. Analyze B-lines:**
+- Looking at the images, I see vertical hyperechoic artifacts arising from the pleural line.
+- These artifacts extend all the way to the bottom of the screen.
+- They move with lung sliding (though I can't see motion in static frames, the prompt implies a video clip analysis).
+- They are distinct vertical lines.
+- Let's look closely at their pattern.
+    - In the first few frames, there are a few distinct vertical lines. They are somewhat spaced out but becoming more confluent.
+    - Wait, looking closer at the sequence, especially frames 4, 6, 7, 8, there are multiple vertical hyperechoic lines.
+    - Are they discrete (septal) or confluent (ground glass)?
+    - In frames like 1, 2, 3, there are distinct vertical lines (rockets). They seem to arise from the pleural line.
+    - However, looking at the overall pattern, especially in the central part, there's a "white out" or confluent vertical lines effect in the deeper part, but the upper part has distinct lines.
+    - Actually, let's re-evaluate. The bright vertical lines are very prominent. They look like "lung rockets".
+    - Are they "septal" or "ground glass"?
+    - "Septal" means discrete, well-spaced. "Ground glass" means confluent, merging into a white sheet.
+    - In the provided images, I see distinct vertical lines (rockets). For example, in frame 4, there's a very bright vertical line and another to its right. They don't seem to completely merge into a single white sheet obscuring everything, but they are numerous.
+    - Wait, let's look at the texture. The area between the lines is dark (lung parenchyma), but there are bright spots.
+    - Let's look at the "air bronchograms". There are punctate and linear hyperechoic foci *within* the lung tissue. This suggests consolidation.
+    - Let's re-read the definitions.
+    - **B-lines:** Hyperechoic vertical artifacts arising from the pleural line.
+    - **Consolidation:** Tissue-like hepatization, shred sign, air bronchograms.
+
+**Let's look for Consolidation first.**
+- The lung tissue looks somewhat solid and echogenic (hepatized). It's not the typical dark, aerated lung. It looks like liver tissue (gray, homogeneous but speckled).
+- There are bright, linear/punctate hyperechoic structures within this tissue. These look like air bronchograms.
+- The border between the consolidated area and the darker area below/around it looks somewhat irregular, possibly a shred sign, but it's hard to be certain without motion. The main feature is the "tissue-like" appearance.
+- So, consolidation = true.
+- Type: It looks like "hepatization" primarily, with visible "air bronchograms". The prompt asks for the *predominant* type. The air bronchograms are quite distinct white dots/lines inside the gray "liver-like" tissue. This is a classic sign of consolidation. The hepatization is the background texture. The air bronchograms are the specific sign.
+- Let's look at the B-lines again in the context of consolidation. B-lines can occur in consolidation, but often they are obscured or replaced by the consolidation pattern.
+- However, the prompt asks to assess for B-lines *and* consolidation separately.
+- **B-lines assessment:** I see vertical hyperechoic lines. They arise from the pleural line (the bright horizontal line at the top of the lung tissue). They extend downwards. They look like "rockets". Are they "septal" or "ground glass"?
+    - In the upper part of the lung field, there are distinct vertical lines. They are somewhat spaced. This fits "septal".
+    - But wait, looking at the entire zone, the vertical lines are quite bright and distinct.
+    - Let's look at the "ground_glass" definition: "Confluent or coalescing B-lines that merge into a diffuse white sheet obscuring A-lines."
+    - In these images, I don't see a complete white sheet. I see distinct lines. So "septal" seems more appropriate for B-lines if they are present.
+    - BUT, looking really closely at the images, especially frames 4, 5, 6... there are multiple vertical lines. They are quite bright.
+    - Actually, looking at the whole picture, this looks like a classic case of **consolidation with air bronchograms**.
+    - The vertical bright lines I initially thought might be B-lines are actually part of the consolidation pattern or perhaps B-lines superimposed on consolidation.
+    - Let's look at the "air bronchograms" definition: "Punctate or linear hyperechoic foci within consolidated (hepatized) lung".
+    - Yes, I see bright white spots and lines in the middle of the gray area. These are air bronchograms.
+    - So, consolidation is definitely present.
+    - Now, are there B-lines? B-lines originate from the pleural line. In consolidation, the pleural line might be irregular.
+    - In the images, the top part of the lung tissue (just below the ribs/pleura) shows some vertical artifacts.
+    - However, the dominant feature is the consolidation.
+    - Let's reconsider the "B-lines" part. The prompt asks to assess for B-lines.
+    - If consolidation is present, B-lines are often not the primary finding, or they are "whiteout".
+    - But let's look at the vertical lines again. In frame 1, there is a vertical line going down. In frame 4, there are two distinct vertical lines. They look like B-lines.
+    - Are they "septal"? They are discrete. There is dark space between them? No, the space is gray/tissue-like.
+    - This suggests **ground_glass** B-lines? "Confluent or coalescing B-lines that merge into a diffuse white sheet".
+    - Or maybe the vertical lines *are* the air bronchograms? No, air bronchograms are usually horizontal or branching within the parenchyma. B-lines are vertical from the pleura.
+    - The vertical lines in the image seem to originate from the pleural surface.
+    - Let's look at the texture. It's a "white lung" appearance in the center. This is often described as "white out" which corresponds to severe B-lines (ground glass) or consolidation.
+    - Given the "air bronchograms" (the white spots/lines in the middle), this is likely consolidation.
+    - Let's look for B-lines again. In the upper part of the gray area, I see vertical streaks.
+    - Actually, looking at the provided solution format, I need to choose "septal", "ground_glass", or "mixed".
+    - If I see distinct vertical lines, it's septal. If I see a sheet, it's ground glass.
+    - In these frames, the vertical lines are quite distinct and bright. They don't look like a uniform sheet. They look like individual rockets. So "septal" might be the answer for B-lines.
+    - **Wait**, let's look at the "Consolidation" section again.
+    - "Tissue-like hepatization": Yes, the lung looks like liver.
+    - "Air bronchograms": Yes, visible as bright spots/lines.
+    - So Consolidation = true.
+    - What about B-lines? If there is consolidation, can we still call them B-lines?
+    - Sometimes, in the transition zone or adjacent areas, B-lines can be seen.
+    - Or, the "vertical artifacts" *are* the consolidation extending? No, B-lines are specific artifacts.
+    - Let's look at the bright vertical lines again. They are very bright, hyperechoic. They extend from the top (pleura) downwards. This is the definition of B-lines.
+    - Are they discrete? Yes, in frames 1, 2, 3, 6, 7, 8, I see distinct vertical lines.
+    - So B-lines = true.
+    - Subtype: They look fairly distinct and spaced, not a complete whiteout sheet everywhere. So "septal" seems plausible.
+    - **However**, looking at the central area, the "vertical lines" might actually be the air bronchograms appearing vertical? No, air bronchograms are usually air-filled bronchi, which are hyperechoic. They can look like branching structures.
+    - Let's look at the texture again. It's very "noisy" and bright in the middle.
+    - Let's try to interpret the "ground_glass" B-lines. "Confluent or coalescing B-lines that merge into a diffuse white sheet".
+    - In frames 4, 5, 6, the central area is quite bright and lacks distinct separation between lines. It looks like a "white out". This fits "ground_glass".
+    - Let's look at frame 4. There is a bright vertical line, and to its right, another one. But the area between them is also bright.
+    - Let's look at frame 8. The bright vertical lines are very distinct.
+    - Let's reconsider the "Consolidation".
+    - The tissue looks solid. This is hepatization.
+    - There are bright spots inside. Air bronchograms.
+    - So Consolidation = true. Type = "air_bronchogram" or "hepatization". The prompt asks for predominant type. The air bronchograms are a very specific sign of consolidation. The hepatization is the background. Usually, if air bronchograms are visible, that's a key finding. But "hepatization" describes the texture. Let's look at the options: "hepatization", "shred_sign", "air_bronchogram".
+    - The bright spots are quite prominent. I will lean towards "air_bronchogram" or "hepatization". Let's look at the images again. The "vertical lines" I see might actually be the air bronchograms? No, they are too straight and vertical.
+    - Let's assume the vertical lines are B-lines.
+    - If B-lines are present, and consolidation is present...
+    - Let's look at the "mixed" B-line option. "Both septal and ground_glass patterns are visible".
+    - In the upper part, lines are distinct (septal). In the deeper part, it gets whiter (ground_glass). This suggests "mixed".
+    - Let's look at the consolidation again.
+    - The tissue is clearly "hepatized". It looks like the liver.
+    - The bright spots are "air bronchograms".
+    - So Consolidation = true.
+    - Type: The prompt asks for *the* predominant type.
+    - If I have to choose between hepatization and air_bronchogram... The air bronchograms are distinct features within the hepatized lung.
+    - Let's look at the visual evidence for B-lines again.
+    - The vertical bright lines are very characteristic of B-lines.
+    - Are they "septal"? They are separate.
+    - Are they "ground_glass"? They don't merge into a sheet everywhere.
+    - Let's look at the frames 1, 2, 3. They show distinct vertical lines. This looks like "septal" B-lines.
+    - But wait, look at the bottom of the lung field. There is a horizontal bright line. That's the diaphragm or a rib shadow? No, it looks like the pleural line/diaphragm interface.
+    - Below that is dark (liver/spleen).
+    - Above that is the lung.
+    - The lung tissue is the gray area.
+    - In the gray area, there are vertical bright lines.
+    - There are also horizontal bright lines (A-lines)? No, the background is gray, not black with horizontal lines. This suggests loss of A-lines, consistent with consolidation or severe B-lines.
+    - The presence of vertical lines extending to the bottom suggests B-lines.
+    - Since the background is gray/tissue-like and not black (aerated), these vertical lines might be artifacts arising from the consolidated lung? Or are they B-lines superimposed?
+    - Actually, in severe consolidation, you can see "B-lines" but they are often called "shred sign" or just part of the consolidation.
+    - But the prompt distinguishes them.
+    - Let's assume the vertical lines are B-lines.
+    - They are distinct. So "septal".
+    - Wait, let's look at the "ground_glass" definition again. "The lung surface appears uniformly bright."
+    - In the images, the lung surface (top part of the gray area) is not uniformly bright. It has distinct lines.
+    - So "septal" seems better for B-lines.
+    - **However**, let's look at the "Consolidation" assessment again.
+    - "Tissue-like hepatization": Yes.
+    - "Air bronchograms": Yes, the bright spots/lines in the middle of the gray area.
+    - So Consolidation = true.
+    - Type: "air_bronchogram" seems very specific and present. "hepatization" is also present. Which is predominant? The air bronchograms are distinct features *within* the hepatization. Often, "hepatization" is the general term for the solid look. "Air bronchograms" is a specific sign.
+    - Let's look at the prompt's classification for consolidation_type.
+    - "air_bronchogram": Punctate or linear hyperechoic foci within consolidated lung.
+    - This fits perfectly with the bright spots in the center.
+    - So I will go with consolidation_type = "air_bronchogram".
+
+    - Now back to B-lines.
+    - If there is consolidation, are there B-lines?
+    - The vertical lines I see... are they B-lines or air bronchograms?
+    - Air bronchograms can be linear and look like vertical streaks if the bronchus is oriented that way.
+    - But B-lines arise from the *pleural line*.
+    - In the images, there are vertical bright lines originating from the top interface.
+    - So they look like B-lines.
+    - But wait, if there is consolidation, the pleural line is often irregular.
+    - Let's look at the "septal" vs "ground_glass" vs "mixed".
+    - In frame 4, there are two distinct vertical lines.
+    - In frame 8, there are two distinct vertical lines.
+    - They are spaced apart. This looks like "septal".
+    - **BUT**, look at the area around them. It's gray.
+    - If the lung is consolidated, you don't typically get B-lines in the classical sense (which are artifacts in aerated lung). You get the consolidation pattern.
+    - However, the prompt asks to assess for B-lines.
+    - Maybe the vertical lines *are* the air bronchograms?
+    - If the vertical lines are air bronchograms, then B-lines are absent?
+    - "B-lines absent... No vertical artifacts meeting B-line criteria".
+    - If the vertical lines are air bronchograms, they are within the parenchyma, not arising from the pleural line as artifacts.
+    - Let's look closely at the origin.
+    - In frame 1, the bright line seems to start from the pleural surface.
+    - In frame 4, there is a bright line that looks like it starts from the pleura.
+    - But there is also a bright spot below it.
+    - This is confusing. Let's look at the overall pattern.
+    - This looks like a "white lung" pattern.
+    - "White lung" is often associated with severe interstitial syndrome (many B-lines).
+    - But there is also hepatization.
+    - This could be a "mixed" picture.
+    - Let's look at the "Septal" definition: "Discrete, well-spaced B-lines with dark lung parenchyma visible between them."
+    - In these images, the lung parenchyma is *not* dark. It is gray/tissue-like. So the "dark lung parenchyma" condition is not met.
+    - This suggests "ground_glass".
+    - "Ground_glass": "Confluent or coalescing B-lines that merge into a diffuse white sheet obscuring A-lines. The lung surface appears uniformly bright."
+    - The lung surface here is not *uniformly* bright, but there are many bright lines.
+    - And the background is not dark.
+    - So maybe "ground_glass" B-lines?
+    - Or maybe "mixed"?
+    - Let's look at the frames again.
+    - Frame 1: Vertical line.
+    - Frame 4: Vertical line + another one.
+    - Frame 8: Vertical line + another one.
+    - They are quite distinct.
+    - But the background is the key. "dark lung parenchyma visible between them" -> False. The background is gray.
+    - So it's not "septal".
+    - Is it "ground_glass"? "merge into a diffuse white sheet". The lines are distinct in some frames, but the area is generally bright.
+    - Let's consider the possibility that there are **no B-lines**.
+    - If the bright vertical lines are actually **air bronchograms** (which can be linear and vertical), then B-lines are absent.
+    - Air bronchograms are "Punctate or linear hyperechoic foci within consolidated (hepatized) lung".
+    - This fits perfectly! The bright lines are *within* the gray, tissue-like area. They don't necessarily arise from the pleural line as an artifact. They look like air-filled structures inside the solid lung.
+    - If so, B-lines = false.
+    - And Consolidation = true.
+    - Type = "air_bronchogram" (since they are linear hyperechoic foci) or "hepatization" (since the tissue is liver-like).
+    - The prompt asks for the *predominant* type.
+    - The air bronchograms are quite distinct features.
+    - Let's check the definitions again.
+    - **Air bronchograms**: Punctate or linear hyperechoic foci within consolidated lung.
+    - This describes the bright lines perfectly.
+    - So, B-lines = false?
+    - Let's verify. Do B-lines arise from the pleural line? Yes.
+    - Do the bright lines in the image arise from the pleural line?
+    - In frame 1, there's a bright spot near the top.
+    - In frame 4, there's a bright line starting near the top.
+    - It's hard to distinguish perfectly.
+    - However, the texture is definitely "hepatization".
+    - In hepatization, you don't typically have B-lines. You have the consolidation signs.
+    - The vertical bright lines look like air bronchograms.
+    - So I will bet on:
+        - **B-lines**: False (lung_rockets = false). The vertical lines are likely air bronchograms. Or, if they are B-lines, they are part of a ground glass pattern. But given the consolidation, "false" is a strong candidate if the lines are structural (air bronchograms).
+        - Wait, let's look at the prompt's B-line definition again. "Hyperechoic vertical artifacts arising from the pleural line".
+        - If I see vertical lines arising from the pleural line, they are B-lines.
+        - In the images, I see vertical bright streaks. Do they arise from the pleural line?
+        - The pleural line is the bright horizontal line at the top of the lung field.
+        - The vertical streaks seem to originate there.
+        - So they look like B-lines.
+        - But the lung is not aerated.
+        - This is a tricky case. "Consolidation with air bronchograms" often looks like this.
+        - The vertical lines could be B-lines superimposed on the consolidation? No, that's not typical.
+        - Usually, in consolidation, A-lines disappear, and you see tissue texture.
+        - The vertical lines *are* the air bronchograms.
+        - Air bronchograms can look like vertical lines if the bronchus is parallel to the probe.
+        - So, B-lines = false.
+        - Consolidation = true.
+        - Type = "air_bronchogram".
+
+    - Let's try the alternative: B-lines = true.
+    - If B-lines = true, are they septal or ground_glass?
+    - If they are septal, there must be dark lung between them. There isn't.
+    - If they are ground_glass, they merge into a white sheet. The image is quite bright/white in the center.
+    - So maybe "ground_glass".
+    - But if it's ground_glass B-lines, that implies interstitial edema (alveolar edema).
+    - This can coexist with consolidation (e.g., pneumonia with edema).
+    - But the "hepatization" sign is very strong here. The tissue looks like liver.
+    - In lung ultrasound, "hepatization" = consolidation.
+    - So Consolidation = true is very likely.
+    - If Consolidation = true, can we have B-lines?
+    - The prompt allows for both.
+    - Let's look at the "air bronchograms" sign.
+    - "Punctate or linear hyperechoic foci within consolidated (hepatized) lung".
+    - This describes the bright spots/lines perfectly.
+    - So, I am leaning towards:
+        - B-lines: False. (The vertical lines are air bronchograms).
+        - Consolidation: True.
+        - Type: "air_bronchogram" or "hepatization".
+    - Which is predominant? The air bronchograms are distinct linear features. The hepatization is the background texture.
+    - Let's look at the images again.
+    - The bright vertical lines are very prominent.
+    - In frame 4, there is a very bright vertical line. And a horizontal one below it.
+    - In frame 6, there are multiple bright spots.
+    - This looks like "air bronchograms" (static air in bronchi).
+    - B-lines are dynamic (move with sliding). Air bronchograms are static (mostly). The prompt implies a video clip ("sequential frames").
+    - If I look at the frames, do the vertical lines move?
+    - Frame 1: Vertical line in middle.
+    - Frame 4: Vertical line in middle, slightly shifted?
+    - Frame 8: Vertical line in middle.
+    - They seem to stay in roughly the same place. This suggests they are structural (air bronchograms) rather than artifacts (B-lines) which would shift slightly with probe movement or lung expansion? Actually B-lines are fixed to the lung.
+    - But the key is "arising from the pleural line".
+    - The bright lines seem to be *in* the tissue, not necessarily starting from the top edge.
+    - In frame 1, the top of the bright line is not clearly at the pleural line. It's somewhere in the middle.
+    - This supports the "air bronchogram" theory.
+    - So, B-lines = false.
+    - Consolidation = true.
+    - Type: "air_bronchogram".
+
+    - Let's double check.
+    - What if the vertical lines *are* B-lines?
+    - If so, they are "ground_glass" because the background is not dark.
+    - And consolidation is also present ("hepatization").
+    - The prompt asks to assess for *both*.
+    - "Assess the image for the presence or absence of B-lines".
+    - "Assess the image for the presence of alveolar consolidation".
+    - It's possible to have both.
+    - But usually, if there's consolidation, the "B-lines" description might be superseded by "shred sign" or "air bronchograms".
+    - Let's look at the "Shred sign". "Irregular, shredded deep border between consolidated and aerated lung".
+    - The border at the bottom of the gray area looks somewhat regular, maybe slightly irregular.
+    - But the "air bronchograms" are very clear.
+    - So "air_bronchogram" is a strong candidate for consolidation_type.
+
+    - Let's reconsider the B-lines.
+    - Look at the very top of the lung field (just below the skin/curved transducer footprint).
+    - There is a pleural line.
+    - Are there vertical artifacts coming from it?
+    - In frame 1, there is a faint vertical artifact.
+    - In frame 4, there is a very bright vertical artifact.
+    - It looks like a B-line.
+    - If it is a B-line, is it "septal" or "ground_glass"?
+    - It's a single bright line in frame 4.
+    - In frame 8, there are two.
+    - They are distinct.
+    - But the background is gray.
+    - This is contradictory. B-lines in "dark lung parenchyma".
+    - Unless... the "gray" is actually just the B-lines themselves being so dense they look like a sheet?
+    - "Ground_glass": "merge into a diffuse white sheet".
+    - The image is not a uniform white sheet. It has texture.
+    - So maybe "septal" B-lines?
+    - "Discrete, well-spaced B-lines with dark lung parenchyma visible between them."
+    - The space between the lines is not black. It's gray.
+    - This implies the lung is not aerated.
+    - If the lung is not aerated, you don't get B-lines (which are reverberation artifacts in aerated lung).
+    - You get consolidation.
+    - So the vertical lines are likely **air bronchograms**.
+    - Therefore, B-lines = false.
+
+    - Final decision process:
+    1.  **Consolidation**: The lung parenchyma is echogenic and tissue-like (hepatized). This is clear. So `consolidation = true`.
+    2.  **Consolidation Type**: I see bright, linear/hyperechoic structures within the consolidated tissue. These fit the description of "air bronchograms" (linear hyperechoic foci). So `consolidation_type = "air_bronchogram"`. (Heptatization is the general look, but air bronchograms are the specific sign present).
+    3.  **B-lines**: Since the lung is consolidated, the typical artifacts are different. The vertical lines are likely air bronchograms. They don't arise from the pleural line as reverberation artifacts. They are within the parenchyma. So `lung_rockets = false`.
+
+    - Wait, let me look at the images one more time.
+    - Is it possible that this is "Septal" B-lines?
+    - If I assume the vertical lines are B-lines...
+    - They are bright, vertical.
+    - But the background is gray.
+    - Maybe the "gray" is just low gain? No, the labels "LT LUNG ZONE 2" are white. The scale on the right is visible. The dark areas are black (no signal). The gray area is tissue.
+    - So the lung is definitely consolidated.
+    - In consolidated lung, you can see "B-lines" only if there is a transition to aerated lung, but here the whole zone looks consolidated.
+    - So B-lines = false is the most logical conclusion.
+
+    - Let's check the "air_bronchogram" definition again.
+    - "Punctate or linear hyperechoic foci within consolidated (hepatized) lung, representing air-filled bronchi."
+    - This matches the bright spots/lines in the center of the gray area perfectly.
+    - So, `consolidation = true`, `consolidation_type = "air_bronchogram"`.
+
+    - What about `lung_rockets`?
+    - If I say false, I need to be sure.
+    - The vertical lines in the center... do they move with sliding?
+    - I can't see motion.
+    - But structurally, they are within the tissue.
+    - B-lines originate from the pleura.
+    - In the images, the pleura is the top boundary.
+    - The vertical lines start lower down.
+    - So they are not B-lines.
+    - They are air bronchograms.
+    - So `lung_rockets = false`.
+
+    - One caveat: Sometimes "B-lines" are used loosely to describe any vertical artifact. But the prompt gives a strict definition: "arising from the pleural line".
+    - The artifacts in the image (the bright lines) do not clearly arise from the pleural line. They are deeper.
+    - So, `lung_rockets = false`.
+
+    - Wait, looking at frame 4 again. There is a bright line that seems to go all the way to the top.
+    - And another one.
+    - And there are bright spots.
+    - This looks like a mix of air bronchograms and maybe some B-lines?
+    - No, if it's consolidation, it's hepatization.
+    - Let's stick with Consolidation = True.
+    - Type = Air bronchogram.
+    - B-lines = False.
+
+    - Let's try to find a reason for B-lines = True.
+    - If the vertical lines are B-lines, then `lung_rockets = true`.
+    - Subtype: `ground_glass`? "merge into a diffuse white sheet". The image is fairly bright in the middle.
+    - Or `mixed`?
+    - But if there is consolidation, "air bronchograms" is the dominant sign.
+    - The prompt asks to assess B-lines *first*.
+    - If I see vertical artifacts arising from the pleural line, I must call them B-lines.
+    - Let's look really closely at the top of the lung field.
+    - In frame 1, there is a bright spot near the top.
+    - In frame 4, there is a vertical line starting near the top.
+    - In frame 8, there is a vertical line starting near the top.
+    - These *do* look like they originate from the pleural line.
+    - So, maybe `lung_rockets = true`.
+    - Subtype: `septal`? "Discrete, well-spaced".
+    - In frame 8, I see two distinct vertical lines. They are spaced.
+    - But the background is gray.
+    - Maybe it's `ground_glass`? "Confluent... merge into a white sheet".
+    - The lines are distinct in some frames, but the area is bright.
+    - Actually, looking at frame 4, the vertical line is very bright and has a "tail". That's a B-line.
+    - There is another bright spot below it. That's an air bronchogram?
+    - This is a complex image.
+    - Let's look at the "LT LUNG ZONE 2" label. Anterior lung zone.
+    - Normal lung here should have A-lines.
+    - Here we have a solid gray area. This is consolidation.
+    - In consolidation, you see hepatization.
+    - You see air bronchograms.
+    - Do you see B-lines?
+    - Usually, B-lines are replaced by the consolidation pattern.
+    - However, at the edge of consolidation, you might see B-lines.
+    - Or, is it possible that this *is* a case of "Septal B-lines" but the lung looks gray due to low contrast?
+    - No, the "tissue-like hepatization" is a specific term.
+    - The image shows a large area of tissue-like echogenicity.
+    - So Consolidation = True is certain.
+    - If Consolidation = True, then `lung_rockets` might be False because the vertical lines are air bronchograms.
+    - Let's assume the vertical lines are air bronchograms.
+    - Then `lung_rockets = false`.
+    - And `consolidation_type = "air_bronchogram"`.
+
+    - Let's reconsider the "Septal" B-lines.
+    - Definition: "Discrete, well-spaced B-lines with dark lung parenchyma visible between them."
+    - Here, the lung parenchyma is NOT dark. It is gray/tissue-like.
+    - So it cannot be "septal" B-lines.
+    - Can it be "ground_glass" B-lines?
+    - Definition: "Confluent or coalescing B-lines that merge into a diffuse white sheet obscuring A-lines. The lung surface appears uniformly bright."
+    - The lung surface is not uniformly bright. It has texture and distinct lines.
+    - So it's likely not "ground_glass" B-lines either.
+    - This reinforces the idea that these are not B-lines.
+    - They are structural elements within the lung: Air Bronchograms.
+    - So, `lung_rockets = false`.
+
+    - Conclusion:
+    - B-lines: Absent (lung_rockets = false).
+    - Consolidation: Present (consolidation = true).
+    - Type: Air bronchogram (consolidation_type = "air_bronchogram").
+
+    - Wait, let's look at the "Shred sign" possibility.
+    - "Irregular, shredded deep border".
+    - The bottom of the gray area (interface with liver/spleen) looks like a horizontal line. It's the diaphragm.
+    - Is it shredded? It looks relatively smooth.
+    - So "shred_sign" is unlikely.
+    - "Hepatization" is the general texture.
+    - "Air bronchogram" is the specific feature.
+    - The prompt asks for "predominant type".
+    - The air bronchograms are quite distinct bright spots/lines.
+    - The hepatization is the background.
+    - Usually, if air bronchograms are seen, it's a specific finding.
+    - I will go with `consolidation_type = "air_bronchogram"`.
+
+    - Let's double check the B-lines one last time.
+    - Could the bright vertical lines be B-lines?
+    - If they are B-lines, they are very bright.
+    - But the "dark lung parenchyma" condition fails.
+    - So, sticking with False.
+
+    - One detail: In frame 4, 5, 6, 7, 8, there are multiple bright spots.
+    - They look like "static" air bronchograms.
+    - So, definitely consolidation.
+
+    - Final check on B-lines.
+    - Is it possible that the prompt considers the vertical bright lines as B-lines?
+    - If I look at the top part of the gray area, there are vertical streaks.
+    - If I call them B-lines, what subtype?
+    - "Septal" requires dark space. No dark space.
+    - "Ground glass" requires confluent white sheet. It's somewhat bright, but distinct lines are visible.
+    - "Mixed"?
+    - This seems unlikely given the clear consolidation.
+    - In the presence of consolidation, "B-lines" are often not the primary descriptor.
+    - I will stick with `lung_rockets = false`.
+
+    - Wait, looking at the very first frame.
+    - There are vertical lines.
+    - Are they moving?
+    - Frame 1 -> Frame 2 -> Frame 3...
+    - The vertical lines seem to stay in the same position.
+    - B-lines are artifacts, they don't move relative to the probe? No, they move with the lung sliding.
+    - Air bronchograms are static structures.
+    - If they don't move, they are air bronchograms.
+    - If they move (sliding), they are B-lines.
+    - Since I have static frames, I can't see motion.
+    - But I can infer from position.
+    - In Frame 1, line is at x=50%.
+    - In Frame 4, line is at x=50%.
+    - In Frame 8, line is at x=50%.
+    - This suggests they are fixed structures -> Air Bronchograms.
+    - So, `lung_rockets = false`.
+
+    - Final Plan:
+    - B-lines: False.
+    - Consolidation: True.
+    - Type: Air bronchogram.
+
+    - Wait, let's look at the "septal" definition again.
+    - "Discrete, well-spaced B-lines".
+    - In frame 8, I see two distinct lines.
+    - Maybe the "gray" is just low echogenicity but still aerated?
+    - No, "tissue-like hepatization" is explicitly mentioned in the prompt as a possibility.
+    - And the image looks like liver (gray, homogeneous).
+    - Normal aerated lung is black (anechoic) with horizontal lines (A-lines).
+    - This is not black. It's gray.
+    - So it's consolidated.
+    - So B-lines (which require aerated lung to reverberate) are not the primary finding.
+    - The vertical lines are air bronchograms.
+
+    - One more check: Could it be "Septal" B-lines overlaying "Hepatization"?
+    - No, that's not a standard description.
+    - I'm confident in Consolidation = True, Type = Air Bronchogram.
+    - And B-lines = False.
+
+    - Let's refine the "Consolidation Type".
+    - Options: hepatization, shred_sign, air_bronchogram.
+    - The image shows hepatization (gray tissue) AND air bronchograms (bright spots).
+    - Which is predominant?
+    - The bright spots are very noticeable.
+    - "Air bronchograms" is a specific sign of consolidation.
+    - "Hepatization" describes the loss of aeration.
+    - The prompt says: "Punctate or linear hyperechoic foci within consolidated (hepatized) lung".
+    - This matches the visual of bright spots in gray tissue.
+    - I will select "air_bronchogram".
+
+    - Wait, is it possible that the bright vertical lines *are* B-lines and the lung is not fully consolidated?
+    - "LT LUNG ZONE 2".
+    - If it were just interstitial syndrome, the lung would be dark with B-lines.
+    - Here the lung is gray.
+    - This is hepatization.
+    - So Consolidation is the main finding.
+
+    - Let's write down the analysis.
+    - Frame by frame:
+        - All frames show a sector scan.
+        - Top: Transducer footprint.
+        - Below: Pleural line (bright horizontal line).
+        - Below that: A region of tissue-like echogenicity (gray, similar to liver/spleen). This is hepatization.
+        - Within this region: Multiple punctate and linear hyperechoic foci (bright spots/lines). These are air bronchograms.
+        - Below the consolidated lung: A bright curved line (diaphragm) and below that, the spleen/liver (anechoic/hypoechoic).
+    - B-lines: The vertical bright lines I initially worried about are actually the linear air bronchograms. They are within the parenchyma, not reverberation artifacts from the pleura. There are no classic B-lines (rockets) arising from the pleura with A-line disappearance and dark background. The background is solid. So B-lines are absent.
+    - Consolidation: Present. Tissue-like appearance (hepatization).
+    - Type: Air bronchograms are clearly visible as bright foci within the hepatized lung.
+
+    - Wait, looking at the very top edge of the gray area.
+    - Is there a pleural line?
+    - Yes, a bright line.
+    - Are there vertical artifacts coming from it?
+    - In frame 4, there is a bright line that looks like it starts at the pleura and goes down.
+    - If that's a B-line...
+    - But it's superimposed on the consolidation.
+    - This is confusing.
+    - Let's look at the "Septal" vs "Ground Glass" again.
+    - If I *must* classify B-lines...
+    - But the prompt says "Assess for presence or absence".
+    - If I say "Absent", I am saying no vertical artifacts meeting criteria.
+    - Criteria: "arising from the pleural line".
+    - The bright lines in the middle... do they arise from the pleura?
+    - In frame 4, the top of the bright line is obscured by the pleural line? Or does it start there?
+    - It looks like it might start there.
+    - But there's also a bright spot below it.
+    - This looks like a "static" air bronchogram that is vertically oriented.
+    - Air bronchograms can be vertical.
+    - So, I will stick with B-lines = False.
+
+    - One edge case: "Mixed" B-lines.
+    - If there are B-lines *and* consolidation...
+    - But the prompt implies a classification.
+    - I'll stick with B-lines = False.
+
+    - Final check on "Consolidation Type".
+    - "Hepatization" vs "Air bronchogram".
+    - The prompt lists "hepatization" as a type.
+    - "Tissue-like hepatization: Lung parenchyma appears solid and echogenic... with loss of normal aeration artifacts."
+    - "Air bronchograms: Punctate or linear hyperechoic foci within consolidated lung..."
+    - The image shows BOTH.
+    - Which is predominant?
+    - The air bronchograms are distinct features. The hepatization is the general state.
+    - Usually, if air bronchograms are visible, that's a key diagnostic sign.
+    - I will choose "air_bronchogram".
+
+    - Let's re-read the "Consolidation Assessment" section.
+    - "Classify the predominant type".
+    - If I see hepatization, that's one type.
+    - If I see air bronchograms, that's another.
+    - The air bronchograms are "punctate or linear hyperechoic foci".
+    - In the images, there are multiple such foci.
+    - So "air_bronchogram" is a good fit.
+
+    - One final check on B-lines.
+    - Look at Frame 1.
+    - There is a vertical line.
+    - Look at Frame 8.
+    - There is a vertical line.
+    - It stays in the same spot.
+    - This confirms it's a structure (air bronchogram), not an artifact (B-line). B-lines are artifacts. While they stay in place relative to the lung, structures like air bronchograms are fixed.
+    - But B-lines are fixed to the lung tissue too.
+    - The difference is "arising from the pleural line".
+    - The line in the image seems to be *in* the tissue.
+    - So, False.
+
+    - Summary:
+    - B-lines: False.
+    - Consolidation: True.
+    - Type: Air bronchogram.
+
+    - Wait, is it possible that the bright lines *are* B-lines and the lung is "Ground Glass"?
+    - "Ground glass B-lines... merge into a diffuse white sheet".
+    - The image is not a white sheet. It has distinct lines and spots.
+    - So not Ground Glass.
+    - "Septal B-lines... discrete, well-spaced... dark lung parenchyma".
+    - No dark lung parenchyma.
+    - So not Septal.
+    - So B-lines must be False.
+
+    - Okay, I'm confident.
+
+    - **B-lines Assessment**:
+        - I see vertical hyperechoic structures.
+        - However, they appear to be within the parenchyma (air bronchograms) rather than artifacts arising from the pleural line (B-lines).
+        - The lung parenchyma is not dark (aerated), it is tissue-like (consolidated).
+        - Therefore, no B-lines meeting the criteria.
+        - `lung_rockets = false`.
+
+    - **Consolidation Assessment**:
+        - The lung parenchyma appears solid and echogenic (hepatized).
+        - There are punctate and linear hyperechoic foci within this tissue (air bronchograms).
+        - `consolidation = true`.
+        - `consolidation_type = "air_bronchogram"`.
+
+    - Wait, let's look at the "hepatization" option again.
+    - "Tissue-like hepatization... with loss of normal aeration artifacts."
+    - This is definitely present.
+    - "Air bronchograms... within consolidated lung".
+    - This is also present.
+    - Which is "predominant"?
+    - The air bronchograms are bright and draw the eye.
+    - But the hepatization is the background.
+    - In many cases, "hepatization" is the general term.
+    - However, the prompt distinguishes them.
+    - If I have to choose, "air_bronchogram" is more specific to the bright spots.
+    - Let's check if there's any shred sign.
+    - The border is at the bottom. It looks like a smooth line (diaphragm). No shred sign.
+    - So it's between hepatization and air_bronchogram.
+    - I'll go with air_bronchogram because the bright spots are distinct features described in the definition.
+
+    - Actually, looking at the images again, the bright lines are quite long.
+    - "Linear hyperechoic foci".
+    - Yes, air bronchograms.
+
+    - Final check: Could the vertical lines be B-lines and the diagnosis is "Septal B-lines" + "Consolidation"?
+    - If the lung was consolidated, you wouldn't see B-lines (which are reverberations in aerated lung).
+    - You would see the consolidation signs.
+    - So the vertical lines MUST be air bronchograms.
+    - Therefore, B-lines = False.
+
+    - One nuance: "Mixed" B-lines.
+    - If I saw B-lines *and* ground glass...
+    - But I don't see B-lines.
+    - So, False.
+
+    - Result:
+    - lung_rockets = false
+    - consolidation = true
+    - consolidation_type = "air_bronchogram"
+

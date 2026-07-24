@@ -1,0 +1,25 @@
+# 0103_lung_common-pleural-based-findings-in-covid19 — Reasoning
+
+Let me analyze these sequential lung ultrasound frames carefully.
+
+Looking at all 10 frames from this lung ultrasound video clip of an anterior lung zone:
+
+**Frame-by-Frame Analysis:**
+
+All frames appear to be from the same ultrasound session (same timestamp: 19/03/2020, 09:55:46), same settings (GEN-M, D 52mm, G 8/1/1/1, XV/M C1/1, PRS 0, P 80%, MI 1.3).
+
+**Pleural Line Assessment:**
+- The pleural line is visible in all frames as a hyperechoic horizontal line in the upper portion of the image
+
+
+- It appears smooth and well-defined, with visible movement between frames indicating lung sliding
+
+**B-lines Assessment:**
+
+Examining the frames, the deep lung field below the pleural line appears predominantly dark with A-lines visible as horizontal reverberation artifacts. Frames 1 and 2 show no obvious vertical hyperechoic artifacts extending to the bottom of the screen, with only mild brightening in the deeper zones rather than discrete B-lines.
+
+Looking across frames 3-10, the pattern continues with a predominantly dark, hypoechoic lung field consistent with A-lines. However, when I look more carefully at frames 5, 6, and 7 specifically, there appear to be some brighter vertical striations in the middle portion of the image that warrant closer attention. In frames 4-6, there are some discrete vertical hyperechoic artifacts that could represent B-lines, and frames 7-10 show an alternating pattern. Overall, the lung field is predominantly dark with A-lines, and I'm only seeing what might be 1-2 isolated B-lines scattered throughout. There's no evidence of consolidation—no hepatization, shred sign, or air bronchograms—which confirms the lung is mostly aerated. Looking at the frames more systematically, I can see the anatomical layers clearly—skin, muscle, then the pleural line with the lung field below. Most frames show predominantly dark lung tissue with A-lines, but frames 5-7 do have what appear to be 1-2 discrete vertical hyperechoic artifacts in the mid-right area that could represent isolated B-lines, though they're not consistently meeting all the criteria across every frame. If they are B-lines, they seem to be the septal type—well-spaced and discrete rather than confluent.
+
+Given this pattern of mostly A-lines with possibly a few isolated B-lines in the anterior zones, this suggests either normal lung aeration or very mild early interstitial changes. My assessment would be that lung rockets are borderline present at best—if they exist, they're septal type and extremely sparse—with no consolidation evident. Absent - but I should reconsider whether those vertical artifacts in frames 4-6 are actually B-lines or if they're side-lobe and edge artifacts from the rib shadows. Looking more carefully at their position and characteristics, the dominant pattern across all frames appears to be a predominantly dark deep lung field consistent with A-lines rather than classic B-lines. Let me go through each frame systematically to finalize my assessment. The pattern seems to shift back toward a darker appearance in the later frames. Across all ten frames, A-lines are clearly present as the dominant feature, with possibly one or two B-lines visible in the middle section that would suggest a septal pattern if confirmed. There's no consolidation anywhere, so my best assessment is normal lung aeration with sparse, isolated B-lines at most—though there's some ambiguity about whether those vertical artifacts are true B-lines or just edge effects. No consolidation features are evident—no hepatization, shred sign, or air bronchograms across any of the frames. I'm settling on my interpretation: isolated B-lines are present in frames 4-7, making lung_rockets true with low confidence, but the overall pattern remains predominantly A-lines with a septal subtype. I'm weighing whether the pattern is predominantly A-lines with normal aeration or if there are enough B-lines to classify as lung rockets. Looking systematically at the criteria, the deep field appears mostly dark across the frames, suggesting A-line dominance, so I'm settling on lung_rockets = false with no consolidation. Setting the subtype to septal consolidation with no actual consolidation present, then reconsidering the image more carefully—I'm looking at the probe type, depth settings, and what's actually visible in each frame. The pleural line is clear throughout, the deep field mostly shows the dark pattern of A-lines, and those vertical hyperechoic artifacts I'm seeing in frames 4-6 appear to originate near the pleural line and extend downward.
+
+These could be B-lines, but across all 10 frames the dominant pattern is clearly A-lines with only sparse vertical artifacts—maybe 1 or 2 per intercostal space at most. By BLUE protocol criteria, that's consistent with normal lung or possibly very mild interstitial changes, not the wet lung pattern you'd expect with significant B-lines. So my final answer is that lung rockets are absent.

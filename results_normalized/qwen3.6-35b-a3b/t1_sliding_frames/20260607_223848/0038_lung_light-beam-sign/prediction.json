@@ -1,0 +1,10 @@
+{
+  "pleura_sliding": "absent",
+  "input_mode": "frames",
+  "usage": {
+    "pass1_input_tokens": 1973,
+    "pass1_output_tokens": 6785,
+    "pass2_input_tokens": 552,
+    "pass2_output_tokens": 401
+  }
+}

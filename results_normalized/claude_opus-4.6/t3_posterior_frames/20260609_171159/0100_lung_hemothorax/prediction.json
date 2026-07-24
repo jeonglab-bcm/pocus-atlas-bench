@@ -1,0 +1,11 @@
+{
+  "plaps": true,
+  "type": "both",
+  "input_mode": "frames",
+  "usage": {
+    "pass1_input_tokens": 3383,
+    "pass1_output_tokens": 973,
+    "pass2_input_tokens": 1133,
+    "pass2_output_tokens": 70
+  }
+}

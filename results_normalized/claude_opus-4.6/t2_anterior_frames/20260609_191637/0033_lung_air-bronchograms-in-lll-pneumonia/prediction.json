@@ -1,0 +1,13 @@
+{
+  "lung_rockets": true,
+  "subtype": null,
+  "consolidation": true,
+  "consolidation_type": "air_bronchogram",
+  "input_mode": "frames",
+  "usage": {
+    "pass1_input_tokens": 3534,
+    "pass1_output_tokens": 1342,
+    "pass2_input_tokens": 1245,
+    "pass2_output_tokens": 98
+  }
+}

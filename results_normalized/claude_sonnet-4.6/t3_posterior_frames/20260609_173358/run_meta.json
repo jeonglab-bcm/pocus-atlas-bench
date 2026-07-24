@@ -1,0 +1,8 @@
+{
+  "run_id": "20260609_173358",
+  "model_id": "claude_sonnet-4.6",
+  "input_mode": "frames",
+  "case_count": 39,
+  "timestamp": "Tue Jun 09 17:44:45 UTC 2026",
+  "normalized_task_dir": "t3_posterior_frames"
+}

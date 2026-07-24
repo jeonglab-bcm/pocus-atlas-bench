@@ -1,0 +1,8 @@
+# Pinned to the verified reproduction environment (issue #405).
+# numpy is pinned exactly because the above-chance permutation test's
+# z effect size is sensitive to the RNG stream, which varies across numpy
+# versions. With these pins the full chain is deterministic run-to-run.
+numpy==2.4.4
+scipy==1.17.1
+pandas==3.0.2
+matplotlib>=3.8

@@ -1,0 +1,11 @@
+{
+  "plaps": true,
+  "type": "consolidation",
+  "input_mode": "frames",
+  "usage": {
+    "pass1_input_tokens": 994,
+    "pass1_output_tokens": 962,
+    "pass2_input_tokens": 350,
+    "pass2_output_tokens": 308
+  }
+}

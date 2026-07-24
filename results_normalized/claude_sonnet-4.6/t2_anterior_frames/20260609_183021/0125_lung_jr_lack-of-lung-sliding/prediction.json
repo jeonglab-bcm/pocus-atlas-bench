@@ -1,0 +1,13 @@
+{
+  "lung_rockets": false,
+  "subtype": null,
+  "consolidation": true,
+  "consolidation_type": "hepatization",
+  "input_mode": "frames",
+  "usage": {
+    "pass1_input_tokens": 4594,
+    "pass1_output_tokens": 6394,
+    "pass2_input_tokens": 1813,
+    "pass2_output_tokens": 93
+  }
+}

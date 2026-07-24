@@ -1,0 +1,13 @@
+{
+  "lung_rockets": true,
+  "subtype": "ground_glass",
+  "consolidation": false,
+  "consolidation_type": null,
+  "input_mode": "frames",
+  "usage": {
+    "pass1_input_tokens": 2759,
+    "pass1_output_tokens": 650,
+    "pass2_input_tokens": 254,
+    "pass2_output_tokens": 31
+  }
+}

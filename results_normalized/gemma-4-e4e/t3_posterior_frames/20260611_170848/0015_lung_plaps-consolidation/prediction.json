@@ -1,0 +1,11 @@
+{
+  "plaps": true,
+  "type": "effusion",
+  "input_mode": "frames",
+  "usage": {
+    "pass1_input_tokens": 1154,
+    "pass1_output_tokens": 1038,
+    "pass2_input_tokens": 374,
+    "pass2_output_tokens": 216
+  }
+}

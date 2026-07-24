@@ -1,0 +1,13 @@
+{
+  "lung_rockets": false,
+  "subtype": null,
+  "consolidation": true,
+  "consolidation_type": "shred_sign",
+  "input_mode": "frames",
+  "usage": {
+    "pass1_input_tokens": 1887,
+    "pass1_output_tokens": 1937,
+    "pass2_input_tokens": 367,
+    "pass2_output_tokens": 653
+  }
+}

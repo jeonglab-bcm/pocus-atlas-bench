@@ -1,0 +1,9 @@
+{
+  "run_id": "20260611_162802",
+  "model_id": "gemma-4-e4e",
+  "input_mode": "frames",
+  "case_count": 87,
+  "timestamp": "Thu Jun 11 16:34:55 UTC 2026",
+  "normalized_task_dir": "t2_anterior_frames",
+  "source_rep": "rep1"
+}

@@ -1,0 +1,426 @@
+# 0082_lung_3r7b6u9w86uz6an4xobueryjzto44e — Reasoning
+
+The user wants me to analyze a series of lung ultrasound frames.
+
+**1. Analyze the frames:**
+- **Image Quality/Settings:** The images show a Philips ultrasound machine. The probe settings are "Superficial, L12-4, 25Hz, 4.0cm". This indicates a high-frequency linear probe, suitable for superficial structures like the chest wall and pleura.
+- **Anatomy:**
+    - Top: Skin and subcutaneous tissue layers.
+    - Below that: Intercostal muscles (hypoechoic bands).
+    - Pleural line: A bright, hyperechoic horizontal line.
+    - Below the pleural line: The lung parenchyma.
+- **B-lines Assessment:**
+    - Looking at the frames, I see the pleural line clearly.
+    - Below the pleural line, there are horizontal A-lines (reverberation artifacts), which are normal.
+    - I need to look for vertical hyperechoic lines (B-lines) arising from the pleural line.
+    - In the first few frames (1, 2, 3), there are no obvious vertical artifacts shooting down.
+    - Wait, looking closer at the lower part of the image, there are some bright, irregular structures. Let's look really closely.
+    - Actually, looking at the bottom left/center, there is a distinct hyperechoic area. It looks like a consolidated area or perhaps a deep structure.
+    - Let's re-evaluate the "B-lines" criteria. B-lines must be vertical, hyperechoic, arising from the pleural line, and moving with lung sliding (if video).
+    - In these static frames, I don't see the classic "comet tail" artifacts extending to the bottom.
+    - However, looking at the lower region, there are bright, echogenic foci. Are these B-lines? No, they look like a consolidation or perhaps a deep bone shadow with some artifacts.
+    - Let's look at the "ground glass" or "septal" classification.
+    - In frames 1-3, there is a somewhat bright, patchy area in the lower central part. It looks like a consolidation.
+    - Let's look for B-lines again. I don't see distinct vertical lines.
+    - Wait, let me look at the bottom left corner of the ultrasound field. There is a hyperechoic, irregular structure. This looks like a consolidation with air bronchograms.
+    - Let's re-examine the whole image. The top part shows normal lung sliding (A-lines). The deeper part shows a region that is more echogenic and tissue-like. This looks like consolidation.
+    - Is there a "shred sign"? The border between the normal aerated lung (top part with A-lines) and the consolidated part (bottom part) seems irregular.
+    - Let's look for B-lines specifically. I don't see clear vertical lines extending to the bottom.
+    - So, `lung_rockets = false`.
+
+**2. Consolidation Assessment:**
+- I see a region in the lower part of the scan that is hypoechoic to isoechoic relative to muscle but has a different texture. It looks "hepatized" (liver-like).
+- There are punctate hyperechoic foci within this area. These look like air bronchograms.
+- The border between the consolidated area and the aerated lung above seems somewhat irregular, suggesting a "shred sign".
+- So, `consolidation = true`.
+- What is the predominant type?
+    - I see tissue-like texture (hepatization).
+    - I see bright spots (air bronchograms).
+    - I see an irregular border (shred sign).
+    - Let's look at the "hepatization" definition: "Lung parenchyma appears solid and echogenic, resembling liver texture". The area at the bottom left fits this description well. It looks like a chunk of tissue.
+    - Let's look for "air bronchograms". Yes, there are small bright spots inside the dark(er) consolidated area.
+    - Let's look for "shred sign". The interface between the normal lung (top) and this area is jagged.
+    - The prompt asks for the *predominant* type. The area looks primarily like a solid chunk of tissue (hepatization). The air bronchograms are present but maybe not the *main* feature compared to the solid tissue appearance. Or perhaps the "shred sign" is the key boundary feature.
+    - Let's look at the frames again. In frames 1-4, there is a distinct hyperechoic mass-like area. In later frames, it becomes a bit clearer. It looks like a subpleural consolidation.
+    - The texture is definitely "hepatization". It looks like liver tissue under the ribs/muscles.
+    - There are bright spots within it, which could be air bronchograms.
+    - So, `consolidation_type` is likely "hepatization" or "air_bronchogram". Given the solid appearance, "hepatization" is a strong candidate. Let's look closer. The bright spots are quite prominent.
+    - Wait, looking at the very bottom, there are bright, irregular echoes. This is characteristic of the deep border of a consolidation (shred sign) or air bronchograms.
+    - Let's reconsider the B-lines. Is it possible that the bright spots *are* B-lines? No, they are too deep and irregular. They are inside the tissue.
+    - Let's look at the "ground glass" possibility. Is the whole lung field white? No, the top part has clear A-lines. So it's not a global ground glass.
+    - Is there a localized area? The bottom part is brighter than the top. But it's not a "sheet" of white. It's a focal area.
+    - So, no B-lines.
+    - Consolidation is present. The texture is tissue-like. So "hepatization".
+    - Wait, let's look at the bright spots again. They are very bright. Could they be "air bronchograms"? Yes.
+    - Is it possible that the "ground_glass" classification applies? "Confluent or coalescing B-lines that merge into a diffuse white sheet". I don't see that. I see a focal area of consolidation.
+    - So, `lung_rockets = false`.
+    - `consolidation = true`.
+    - `consolidation_type`: The area is hepatized. There are air bronchograms visible as bright flecks. The border is irregular. The prompt asks for the *predominant* type. Usually, if air bronchograms are seen, they are a specific sign. But the tissue itself is hepatized. Let's look at the provided definitions.
+        - "hepatization": tissue-like appearance.
+        - "air_bronchogram": punctate or linear hyperechoic foci within hepatized lung.
+    - In the images, the hyperechoic foci are quite distinct. In frame 1, there's a bright cluster. In frame 3, it's clearer. It looks like a "static lung sign" or similar.
+    - Actually, looking closely at the bottom left, it looks like a rib shadow? No, it's too deep.
+    - Let's look at the overall pattern. It looks like a subpleural consolidation.
+    - The bright spots inside are likely air bronchograms.
+    - So, `consolidation_type = "air_bronchogram"`? Or `hepatization`?
+    - Let's look at the "shred sign". The border is irregular.
+    - Let's try to classify based on the most prominent feature. The tissue looks like liver. So hepatization is the base state. The air bronchograms are a feature *of* that hepatization.
+    - However, often "air bronchogram" is chosen if distinct air bronchograms are the key finding.
+    - Let's look at the "ground_glass" option again. "The lung surface appears uniformly bright." In the lower part, the tissue is somewhat bright but not a "white out". It's heterogeneous.
+    - Let's go with `consolidation = true` and `consolidation_type = "hepatization"`. The tissue-like texture is the primary descriptor. The air bronchograms are secondary signs. Wait, actually, looking at the very bottom, there are bright, branching structures. That looks like air bronchograms.
+    - Let's look at the "B-lines" section again. "septal", "ground_glass", "mixed".
+    - Is it possible that the bright area *is* a ground glass opacity?
+    - "Ground glass: Confluent or coalescing B-lines... merging into a diffuse white sheet".
+    - In the images, the area below the pleura (but not at the very bottom) looks somewhat hazy and bright, obscuring the A-lines.
+    - Let's look at the top part of the lung field. There are horizontal lines (A-lines).
+    - Below that, there is a zone of increased echogenicity. It's not a clean vertical line (B-line). It's a patchy, bright area.
+    - This could be "ground_glass" if it's confluent B-lines.
+    - Let's look really closely at the bright area. It looks like a cluster of B-lines that are very close together.
+    - If I zoom in on the region just below the pleural line, in the middle/left... it looks like there are vertical streaks.
+    - Let's re-evaluate.
+    - Frames 1-3: There is a bright, irregular area in the lower left/center.
+    - Frames 4-8: The area becomes slightly clearer. It looks like a consolidation.
+    - Let's look for "shred sign". The interface between the aerated lung (with A-lines) and the abnormal area is jagged. This is the shred sign.
+    - So consolidation is definitely present.
+    - Now, back to B-lines. If there is consolidation, B-lines are often not the primary finding, or they are superimposed.
+    - The prompt asks to assess B-lines *first*.
+    - "Assess the image for the presence or absence of B-lines".
+    - If I see a consolidation, I should look for B-lines in the *non-consolidated* areas or around it.
+    - In the upper part of the lung field, I see A-lines. I don't see clear vertical B-lines.
+    - So `lung_rockets = false`.
+    - Now for consolidation.
+    - I see a region of tissue-like echogenicity (hepatization).
+    - I see bright spots (air bronchograms).
+    - I see an irregular border (shred sign).
+    - Which type is predominant?
+    - The area looks like a chunk of liver. So "hepatization".
+    - The bright spots are distinct. "Air bronchogram".
+    - Let's look at the definitions again.
+    - "hepatization": Predominantly tissue-like appearance.
+    - "air_bronchogram": Predominantly punctate or linear hyperechoic foci.
+    - In these images, the bright spots are quite prominent against the darker consolidated tissue. This suggests "air_bronchogram" might be the intended label if the foci are the main feature.
+    - However, the tissue itself is hepatized.
+    - Let's look at the "shred sign". "Irregular, shredded deep border". This is clearly visible at the bottom of the consolidated area.
+    - So maybe "shred_sign"?
+    - Let's look at the "ground_glass" option again. "Confluent... B-lines". This usually refers to the interstitial syndrome, not necessarily focal consolidation. But ground glass can be focal.
+    - The area at the bottom looks like a focal consolidation.
+    - Let's assume the bright spots are air bronchograms.
+    - Let's assume the tissue is hepatized.
+    - Let's assume the border is shredded.
+    - Which is the *predominant* type?
+    - Usually, if you see air bronchograms, you call it air bronchograms.
+    - If you see a shred sign, you call it shred sign.
+    - If you see a solid mass, you call it hepatization.
+    - In frame 1, the bright spots are very obvious. In frame 4, the area looks more like a solid mass with some bright spots.
+    - Let's look at the overall texture. It's heterogeneous.
+    - Let's consider the possibility of "ground_glass".
+    - "Ground glass: Confluent or coalescing B-lines... merging into a diffuse white sheet".
+    - Looking at the area below the pleura, it is bright and somewhat diffuse. It's not a sharp mass. It blends with the surrounding tissue.
+    - This could be interpreted as ground glass.
+    - But there is a distinct hyperechoic area at the bottom.
+    - Let's look at the "B-lines" again.
+    - Are those vertical lines in the middle actually B-lines?
+    - In frame 1, just below the pleural line, there are vertical streaks. They look like B-lines.
+    - If those are B-lines, then `lung_rockets = true`.
+    - They are vertical, hyperechoic, and extend downwards.
+    - Are they distinct (septal) or confluent (ground_glass)?
+    - They look somewhat confluent in the middle area.
+    - But wait, looking deeper, there's that bright mass.
+    - Let's reconsider the whole image structure.
+    - Top: Chest wall.
+    - Middle: Pleural line.
+    - Below: Lung.
+    - In the lung, I see horizontal A-lines in the upper part.
+    - In the lower part, I see a bright, irregular area.
+    - Is this area *part* of the lung or something else?
+    - It looks like a subpleural consolidation.
+    - In subpleural consolidation, you often see a "shred sign" at the deep border.
+    - The bright spots inside are air bronchograms.
+    - So, consolidation is present.
+    - Are there B-lines?
+    - If there is consolidation, B-lines might not be visible or might be present in adjacent areas.
+    - In the adjacent (superior) area, I don't see clear B-lines. Just A-lines.
+    - So `lung_rockets = false`.
+
+    - Now, consolidation type.
+    - The area is "hepatized" (tissue-like).
+    - It has "air bronchograms" (bright spots).
+    - It has a "shred sign" (irregular border).
+    - Which is predominant?
+    - The bright spots are quite numerous and distinct.
+    - But the overall shape is a solid mass.
+    - Let's look at the "ground_glass" possibility one more time.
+    - Could the bright area be ground glass?
+    - "Ground glass... lung surface appears uniformly bright."
+    - The area is bright, but it's not a uniform sheet. It has texture.
+    - And it's in the lower part, not right at the surface.
+    - Actually, looking at frame 1, the bright area is somewhat central.
+    - Let's look at the "B-lines" classification options again.
+    - Maybe I am missing B-lines.
+    - Let's look at the vertical lines. In frame 1, there are vertical lines extending from the pleural line downwards. They are faint but visible.
+    - They are spaced out.
+    - If these are B-lines, then `lung_rockets = true`.
+    - If they are spaced out, it's `septal`.
+    - But looking deeper, the tissue looks consolidated.
+    - Usually, B-lines and Consolidation are distinct findings. You can have both.
+    - If I see B-lines *and* consolidation, I should report both.
+    - But the prompt asks to assess B-lines first, then consolidation.
+    - And for consolidation, it asks for a single type.
+    - Let's look at the bright spots at the bottom again. Are they B-lines?
+    - No, they are too deep and irregular. They are inside the tissue.
+    - So, likely consolidation.
+    - Let's look for B-lines in the normal looking part of the lung.
+    - I see horizontal lines (A-lines). I don't see vertical lines.
+    - So `lung_rockets = false`.
+
+    - Now, back to consolidation.
+    - I see a region of increased echogenicity.
+    - It has a "tissue-like" appearance. -> Hepatization.
+    - It has bright spots. -> Air bronchograms.
+    - It has an irregular border. -> Shred sign.
+    - The prompt asks for the *predominant* type.
+    - In frame 1, the bright spots are very obvious.
+    - In frame 5, the area looks more like a solid dark mass with some bright spots.
+    - In frame 8, the area looks like a solid mass.
+    - This looks like "hepatization" with air bronchograms.
+    - Between "hepatization" and "air_bronchogram", which is better?
+    - "Hepatization" describes the tissue texture. "Air bronchogram" describes a specific sign within it.
+    - If the air bronchograms are the most striking feature, maybe that's the label.
+    - But usually, "hepatization" is the primary classification for the consolidated lung tissue itself.
+    - Let's look at the "shred sign" option.
+    - "Irregular, shredded deep border".
+    - The border at the bottom is definitely irregular.
+    - But is it the *predominant* feature?
+    - The tissue takes up a significant portion of the screen.
+    - Let's guess "hepatization" is the safest bet for the tissue texture, but the bright spots are very prominent.
+    - Actually, let's look at the "ground_glass" option again.
+    - Is it possible that the "consolidation" is actually "ground glass"?
+    - Ground glass is "hazy opacity... bronchial walls are still visible".
+    - In ultrasound, it looks like confluent B-lines.
+    - The area at the bottom is quite echogenic (bright). Ground glass is usually less echogenic than consolidation (liver).
+    - This area is quite bright. So likely consolidation (hepatization).
+    - Let's look at the bright spots again. They are *very* bright. Like bone or air.
+    - In a consolidated lung, air bronchograms are bright.
+    - So, `consolidation = true`.
+    - `consolidation_type`: "air_bronchogram" seems plausible because of the distinct bright foci.
+    - "hepatization" is also plausible.
+    - "shred_sign" is plausible.
+    - Let's look at the visual evidence again.
+    - The bright spots are clustered. They look like "static lung sign" or "shred sign" related.
+    - Actually, looking at the bottom, the bright area looks like the interface between consolidated and aerated lung.
+    - Wait, is that the "shred sign"?
+    - The "shred sign" is the deep border of a subpleural consolidation.
+    - In the images, the bright irregular area is at the *bottom* of the field of view.
+    - This could be the deep border of a large consolidation.
+    - Or it could be a rib shadow? No, ribs cause acoustic shadowing (dark), not brightness.
+    - So it's not a rib.
+    - It's likely the deep border of a consolidation.
+    - So "shred_sign" is a strong candidate.
+    - But the prompt asks for the *predominant* type.
+    - If I see a shred sign, it implies consolidation is present.
+    - The area *above* the shred sign is the consolidated lung.
+    - The texture of that lung is tissue-like.
+    - So "hepatization".
+    - But the bright spots are inside.
+    - Let's try to find a definitive feature.
+    - In frame 1, there is a cluster of bright echoes in the lower left.
+    - In frame 4, the area looks like a "white lung" but only in a patch.
+    - This looks like a focal consolidation.
+    - The bright spots are air bronchograms.
+    - I will classify this as **consolidation = true** and **consolidation_type = "air_bronchogram"**. Why? Because the bright foci are the most distinct feature distinguishing it from a simple homogeneous hepatization.
+    - Wait, let's look at the "ground_glass" option again.
+    - "Confluent... B-lines... merging into a diffuse white sheet".
+    - The area is somewhat diffuse and white.
+    - But it has distinct borders at the bottom? No, it fades out.
+    - Actually, looking at the top of the bright area, it blends with the normal lung.
+    - This suggests "ground_glass".
+    - Let's compare "ground_glass" vs "hepatization".
+    - Ground glass is less echogenic than liver. Hepatization is as echogenic as liver.
+    - In the images, the bright area is *less* echogenic than the muscle above it? No, it looks similar or slightly brighter.
+    - Muscle is hypoechoic (dark grey).
+    - Liver is isoechoic to slightly hyperechoic (light grey).
+    - The area at the bottom is quite bright (white).
+    - This suggests consolidation (hepatization) rather than ground glass.
+    - Ground glass is usually a "hazy" increase in echogenicity, where A-lines are still somewhat visible or B-lines are coalesced.
+    - Here, the area looks solid.
+    - So, back to consolidation.
+    - Is it "hepatization", "shred_sign", or "air_bronchogram"?
+    - The bright spots are very prominent. I see at least 3-4 distinct bright foci.
+    - This fits "air_bronchogram".
+    - The border is irregular. This fits "shred_sign".
+    - The tissue is tissue-like. This fits "hepatization".
+    - Which one to pick?
+    - The prompt says "If consolidation is present, classify the predominant type".
+    - In many lung ultrasound datasets, "air_bronchogram" is a specific label used when air bronchograms are clearly visible.
+    - "Shred sign" is used when the border is the main feature.
+    - "Hepatization" is used for the general texture.
+    - Looking at the cluster of bright spots, they look like air bronchograms.
+    - So I will go with **air_bronchogram**.
+    - Wait, let me look at the B-lines again.
+    - Is it possible that the vertical streaks in the normal lung *are* B-lines?
+    - In frame 1, looking just below the pleural line, there are faint vertical lines.
+    - In frame 2, they are slightly more visible.
+    - In frame 3, they are visible.
+    - They are distinct and spaced.
+    - This would be **septal** B-lines.
+    - If I see septal B-lines, then `lung_rockets = true`.
+    - Let's look really closely at the original images.
+    - The area above the consolidation/bright spots... is there anything there?
+    - There are horizontal lines (A-lines).
+    - Are there vertical lines?
+    - It's hard to tell for sure due to resolution.
+    - But usually, if there's consolidation, you focus on that.
+    - However, the prompt asks to assess B-lines *first*.
+    - If I don't see clear B-lines, I say false.
+    - Let's assume `lung_rockets = false` for now. The vertical lines I thought I saw might just be noise or texture.
+    - Let's look at the bright area again.
+    - It looks like a "subpleural consolidation".
+    - Subpleural consolidations often have a shred sign.
+    - And air bronchograms.
+    - Let's look at the "ground_glass" option one more time.
+    - "Confluent... B-lines... merging into a diffuse white sheet".
+    - The bright area *is* somewhat of a sheet, but it's deep.
+    - And it's not a "sheet" extending from the pleura. It's a mass.
+    - So not ground glass.
+
+    - Decision:
+    - B-lines: Absent. (I don't see clear vertical artifacts).
+    - Consolidation: Present.
+    - Type: The bright spots are very distinct. They look like air bronchograms. The tissue around them is hepatized. The border is shredded.
+    - "Air bronchogram" seems like a good specific descriptor.
+    - "Hepatization" is also good.
+    - Let's look at the "shred sign" definition again. "Irregular, shredded deep border".
+    - In the images, the bottom of the bright area is irregular.
+    - But the bright spots *inside* are more numerous.
+    - Let's try to find a reason to choose one over the other.
+    - In frame 1, the bright spots are clustered.
+    - In frame 4, the cluster is clearer. It looks like a "static lung sign" which is associated with air bronchograms in consolidation.
+    - So "air_bronchogram" is a strong candidate.
+    - Let's check "hepatization". If the whole area is just tissue-like, it's hepatization.
+    - The area is not perfectly uniform. It has bright specks.
+    - So "air_bronchogram" captures the heterogeneity.
+
+    - Wait, let's look at the "B-lines" again.
+    - Look at the top part of the lung field.
+    - There are horizontal lines.
+    - Are there vertical lines arising from the pleural line?
+    - In frame 1, there is a faint vertical line near the center.
+    - In frame 2, it's gone.
+    - This suggests movement -> Lung sliding.
+    - If it moves, it's a B-line (or artifact).
+    - But B-lines move *with* lung sliding.
+    - If it's a skin artifact, it moves with skin.
+    - Lung sliding moves the pleural line and the artifacts attached to it.
+    - The horizontal A-lines move.
+    - The faint vertical line... if it moves with the pleural line, it's a B-line.
+    - It looks like it might be moving.
+    - But it's very faint.
+    - Let's assume `lung_rockets = false` to be safe, as they aren't "lung rockets" (bright, thick).
+
+    - Final check on Consolidation.
+    - The bright area is definitely abnormal.
+    - It looks like a subpleural consolidation.
+    - The bright spots are air bronchograms.
+    - So `consolidation = true`.
+    - `consolidation_type = "air_bronchogram"`. Or maybe "hepatization".
+    - Let's look at the provided solution format. It asks for a classification.
+    - Let's look at the "shred sign" again.
+    - The border is definitely irregular.
+    - But the "air bronchograms" are distinct bright spots.
+    - I will go with **air_bronchogram** as it's a specific sign visible.
+    - Wait, looking at the very bottom, the bright area is the *deepest* part.
+    - Is it possible that this is the "shred sign" and the area above is the consolidation?
+    - Yes. The area above the shred sign is the consolidation.
+    - The texture of the consolidation is hepatized.
+    - The bright spots *within* the consolidation are air bronchograms.
+    - So all three (hepatization, air_bronchogram, shred_sign) are present.
+    - Which is *predominant*?
+    - The hepatization is the background state.
+    - The air bronchograms are distinct features.
+    - The shred sign is a border feature.
+    - Usually, "hepatization" is the default for consolidation unless air bronchograms are the main focus.
+    - But here, the bright spots are very conspicuous.
+    - Let's look at the "ground_glass" option one last time.
+    - If the B-lines are confluent, it's ground glass.
+    - I don't see confluent B-lines.
+    - So, sticking with consolidation.
+    - I will choose **air_bronchogram** because the bright foci are the most salient feature distinguishing it from simple hepatization.
+    - Wait, looking at frame 1 again. The bright area is in the lower left.
+    - It looks like a cluster of bright echoes.
+    - This is classic for air bronchograms.
+    - So `consolidation_type = "air_bronchogram"`.
+
+    - Let's reconsider B-lines.
+    - Is it possible that the "ground_glass" description fits?
+    - "Confluent... B-lines... merging into a diffuse white sheet".
+    - The area is a bit white.
+    - But it's deep. Ground glass is usually interstitial, so it's not a deep mass.
+    - This looks like a mass.
+    - So consolidation.
+
+    - One more check: "septal" B-lines.
+    - "Discrete, well-spaced B-lines... typically <=3 per intercostal space".
+    - I don't see distinct B-lines.
+    - So `lung_rockets = false`.
+
+    - Summary:
+    - B-lines: False.
+    - Consolidation: True.
+    - Type: Air bronchogram (due to distinct bright spots) or Hepatization (due to tissue texture).
+    - Let's look at the "shred sign" definition again. "Irregular, shredded deep border".
+    - The border at the bottom is irregular.
+    - But the bright spots are inside.
+    - I'll bet on **air_bronchogram**.
+
+    - Wait, let's look at the images as a sequence.
+    - Frame 1: Bright spots visible.
+    - Frame 2: Bright spots visible.
+    - Frame 3: Bright spots visible.
+    - Frame 4: Bright spots visible.
+    - Frame 5: The bright spots seem to disappear or become less distinct. The area looks more uniform and hypoechoic (darker).
+    - Frame 6: Uniform hypoechoic area.
+    - Frame 7: Uniform hypoechoic area.
+    - Frame 8: Uniform hypoechoic area.
+    - This change in appearance suggests a "static lung sign" or similar where air bronchograms might appear/disappear or change with breathing? Or maybe it's just gain adjustment or angle?
+    - No, the gain settings (Gn 60) seem constant.
+    - Maybe the probe moved slightly?
+    - The text "3/2/4" suggests this is frame 3 of 24? Or 3 of 4? No, "3/2/4" usually means something else. Maybe slice number.
+    - The change from bright spots to darker tissue suggests the bright spots were transient.
+    - This is characteristic of **air bronchograms**. They are dynamic. They appear when air is trapped in bronchi.
+    - So, the presence of these dynamic bright spots confirms **air_bronchogram**.
+    - The underlying tissue is hepatized.
+    - So, `consolidation_type = "air_bronchogram"`.
+
+    - Final Conclusion:
+    - B-lines: Absent (`lung_rockets = false`).
+    - Consolidation: Present (`consolidation = true`).
+    - Type: Air bronchogram (`consolidation_type = "air_bronchogram"`).
+
+    - Wait, let me double check the "B-lines" assessment.
+    - Could the vertical lines in the normal lung be B-lines?
+    - In frame 5, 6, 7, 8, the lung looks very uniform.
+    - Is it possible that it's "ground glass"?
+    - "Ground glass... lung surface appears uniformly bright."
+    - In frames 5-8, the area is somewhat bright, but not "white sheet" bright. It's grey.
+    - And it's deep.
+    - So likely just consolidation.
+    - I will stick with `lung_rockets = false`.
+
+    - One detail: "If B-lines are present, classify the subtype".
+    - Since I think they are absent, I don't need to classify.
+    - But let's look really closely at the pleural line.
+    - In frame 1, there are vertical artifacts.
+    - They are faint.
+    - If I call them B-lines, they are "septal" (discrete).
+    - But they are not very distinct.
+    - I'll stick with absent.
+
+    - Final check on consolidation type.
+    - "hepatization": Tissue-like.
+    - "shred_sign": Irregular border.
+    - "air_bronchogram": Punctate/linear hyperechoic foci.
+    - In frames 1-4, the hyperechoic foci are very prominent.
+    - In frames 5-8, they are less visible, but the tissue is still there.
+    - This dynamic appearance of bright spots is key for air bronchograms.
+    - So "air_bronchogram" is the best fit.
+
