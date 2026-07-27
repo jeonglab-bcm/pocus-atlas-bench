@@ -14,9 +14,10 @@ drift and are deprecated over time, so the frozen raw outputs are the only
 verifiable artifact. Method reproducibility (prompts, model IDs, frame/M-mode
 extraction) is documented in the manuscript appendices and summarized below.
 
-> ⚠️ **PLACEHOLDER - manuscript not yet submitted.** Title, authors, venue, year,
-> and DOI are provisional and will be finalized at preprint/submission time.
-> See [Citation](#citation).
+> **Preprint available on medRxiv:**
+> [Morphology, Not Motion: Benchmarking Vision-Language Models on Multi-Sign
+> Lung Ultrasound Interpretation](https://doi.org/10.64898/2026.07.23.26358829)
+> (doi:10.64898/2026.07.23.26358829, 2026). Not yet peer-reviewed.
 
 ## What's included
 
@@ -146,16 +147,21 @@ are recorded here so the frozen outputs are interpretable:
 
 ## Citation
 
-> **PLACEHOLDER - do not cite yet.** The manuscript has not been submitted.
+> Preprint on medRxiv; not yet peer-reviewed.
 
 ```bibtex
-@misc{pocus_atlas_bench_PLACEHOLDER,
-  title  = {Morphology, Not Motion: Benchmarking Vision-Language Models on
-            Multi-Sign Lung Ultrasound Interpretation},
-  author = {Lee, Jaeyeon and others},
-  year   = {TBD},
-  note   = {Preprint in preparation. Venue, year, and DOI to be finalized.},
-  howpublished = {\url{TBD}}
+@article{lee2026morphology,
+  title   = {Morphology, Not Motion: Benchmarking Vision-Language Models on
+             Multi-Sign Lung Ultrasound Interpretation},
+  author  = {Lee, Jaeyeon and Papastathopoulos-Katsaros, Athanasios and
+             Buralkin, Ilia and Shaik, Zahid and Lee, Brandon and
+             Leung, Stephanie K. and Alavi, Michael and Silva, Benjamin and
+             Choi, Benjamin and Liu, Zhandong and Jeong, Hyun-Hwan},
+  year    = {2026},
+  journal = {medRxiv},
+  doi     = {10.64898/2026.07.23.26358829},
+  url     = {https://doi.org/10.64898/2026.07.23.26358829},
+  note    = {Preprint, not yet peer-reviewed}
 }
 ```
 
